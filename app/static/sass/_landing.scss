@@ -1,0 +1,122 @@
+body {
+    font-family: "Raleway";
+    font-family: "Dosis";
+    font-family: "Roboto";
+    font-family: "Ropa Sans";
+    font-family: "Averia Libre";
+    @media (max-width: $phone) {
+        font-family: "Ropa Sans";
+    }
+    color: $white;
+}
+
+img.bg {
+    min-height: 100%;
+    min-width: 1024px;
+
+    width: 100%;
+    height: auto;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+
+
+h1 {
+    margin-bottom: 0;
+    margin-top: 100px;
+    font-size: 124px;
+    @media (max-width: $big-screen) {
+        margin-top: 30px;
+    }
+    @media (max-width: $laptop) {
+        margin-top: 10px;
+        font-size: 82px;
+    }
+    @media (max-width: $tablet) {
+        font-size: 68px;
+    }
+    @media (max-width: $phone) {
+        font-size: 54px;
+    }
+    font-family: "Roboto";
+    font-family: "Raleway";
+    font-family: "Averia Libre";
+}
+
+h2, h3 {
+    text-shadow: 1px 1px $black;
+    font-size: 36px;
+    margin-top: 0;
+    font-weight: 400;
+    @media (max-width: $laptop) {
+        font-size: 32px;
+    }
+    @media (max-width: $tablet) {
+        font-size: 24px;
+    }
+    @media (max-width: $phone) {
+    }
+}
+
+h2 {
+    @media (max-width: $phone) {
+    }
+    @media (max-width: $tablet) {
+    }
+    @media (max-width: $laptop) {
+    }
+    @media (max-width: $big-screen) {
+    }
+}
+
+h3 {
+    @media (max-width: $phone) {
+    }
+    @media (max-width: $tablet) {
+    }
+    @media (max-width: $laptop) {
+    }
+    @media (max-width: $big-screen) {
+        margin-top: 40px;
+    }
+    margin-top: 120px;
+    a {
+        color: $white;
+        border-bottom: 2px solid $white;
+        &:hover {
+            color: steelblue;
+            border-color: steelblue;
+            text-decoration: none;
+        }
+    }
+}
+
+#explainer {
+    margin-top: 35px;
+    p {
+        font-size: 23px;
+        font-weight: 200;
+        line-height: 1.3em;
+        text-shadow: 1px 1px $black;
+        @media (max-width: $big-screen) {
+        }
+        @media (max-width: $laptop) {
+            font-size: 20px;
+        }
+        @media (max-width: $tablet) {
+            font-size: 18px;
+            padding: 0 30px;
+        }
+        @media (max-width: $phone) {
+            padding: 0 10px;
+        }
+    }
+}
