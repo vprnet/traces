@@ -1,3 +1,4 @@
+@import 'compass/css3';
 @import "bootstrap";
 @import "mixin";
 @import "vpr";
@@ -7,3 +8,59 @@
 @import "share";
 @import "photo";
 @import "text";
+
+body {
+    font-family: "Raleway";
+    font-weight: 300;
+    // font-family: "Averia Libre";
+    color: $white;
+    @include background-size(cover);
+    background-image: url('../img/vpr-collage-small.jpg');
+    // -webkit-font-smoothing: antialiased;
+}
+
+img.bg {
+    min-height: 100%;
+    min-width: 1500px;
+    max-width: 100%;
+
+    width: 100%;
+    height: auto;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+h1, h2, h3 {
+    font-family: "Raleway";
+    font-weight: 300;
+}
+
+h3, .h3 {
+    font-size: 30px;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: $white;
+    border-bottom: 2px solid $white;
+    &:hover {
+        color: $blue;
+        border-color: $blue;
+        text-decoration: none;
+    }
+}
+
+.pill {
+    padding: 0.6em 1em 0.5em;
+    text-transform: uppercase;
+    @include border-radius(2em);
+    border: 2px solid #fff;
+    font-family: "Raleway";
+    font-weight: 300;
+}

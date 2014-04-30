@@ -17,7 +17,7 @@ def index():
         'twitter_hashtag': ""
     }
 
-    return render_template('content.html',
+    return render_template('landing.html',
         page_title=page_title,
         social=social,
         page_url=page_url)
