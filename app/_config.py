@@ -9,7 +9,7 @@ FREEZER_IGNORE_MIMETYPE_WARNINGS = True
 AWS_KEY = ''
 AWS_SECRET_KEY = ''
 AWS_BUCKET = 'www.vpr.net'
-AWS_DIRECTORY = 'apps/sandbox'
+AWS_DIRECTORY = 'apps/traces'
 
 NPR_API_KEY = ''
 
@@ -19,7 +19,7 @@ GOOGLE_SPREADSHEET = {'USER': '',
 
 # Cache Settings (units in seconds)
 STATIC_EXPIRES = 60 * 24 * 3600
-HTML_EXPIRES = 3600
+HTML_EXPIRES = 6 * 60 * 60
 
 # Upload Settings (ignores anything included below)
 IGNORE_DIRECTORIES = ['.git', 'venv', 'sass', 'templates', 'gimp']
