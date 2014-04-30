@@ -1,0 +1,28 @@
+#share {
+    margin-top: 50px;
+    h2 {
+        text-align: center;
+        font-size: 124px;
+        margin-bottom: 0;
+        a {
+            border: 0;
+        }
+    }
+    h3 {
+        font-family: "Averia Libre";
+        margin: 20px 0;
+    }
+    p {
+        font-size: 22px;
+        line-height: 1.2em;
+    }
+    #share_what {
+        margin-top: 50px;
+        h3, p {
+            text-align: left;
+        }
+        p {
+            margin-top: 10px;
+        }
+    }
+}

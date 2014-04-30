@@ -46,18 +46,21 @@ html, body {
     }
     a {
         border: 0;
-        color: darken(white, 5%);
+        color: $white;
         &:hover {
-            color: steelblue;
+            color: $blue;
         }
     }
     div.icon {
         font-size: 28px;
     }
-    #navbar-title {
+    div.ion-social-facebook {
+        padding-right: 5px;
+    }
+    #navbar_title {
         color: darken(white, 5%);
         font-size: 26px;
-        font-weight: 400;
+        font-weight: 100;
         display: inline;
         position: relative;
         top: 6px;

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_title }} | VPR{% endblock %}
+
+{% block content %}
+<img class="bg" src="{{ url_for('static', filename='img/vpr-collage-small.jpg') }}" alt="Blurred background image">
+
+<div id="share" class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h2><a href="mailto:share@vpr.net"><span class="icon ion-camera"></span></a></h2>
+            <h3>Share A Photo</h3>
+            <p><a href="mailto:share@vpr.net">Email us</a> a photograph and a short description of an everyday object, a place, or even a person of something that reminds you of someone you've lost.</p>
+        </div>
+        <div class="col-sm-6">
+            <h2><a href="tel:8025528899"><span class="icon ion-mic-a"></span></a></h2>
+            <h3>Record Your Story</h3>
+            <p>Call us at <a href="tel:8025528899">802-552-8899</a> and leave a message that tells about something, someone, or somewhere that reminds you of someone you've lost to drug addiction.</p>
+        </div>
+    </div>
+    <div id="share_what" class="row">
+        <div class="col-xs-12">
+            <h3>What Should I Share?</a>
+            <p><em>Traces</em> is an attempt to catalog the people, places and things that remind us of those we've lost to drug addiction. What you share might be deeply personal but otherwise ordinary&mdash;an empty chair, a log once used for splitting wood, maybe even a person.</p>
+            <p>The traces of those we've lost are everywhere. We're asking, what are they?</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script-ck.js') }}"></script>
+{% endblock %}

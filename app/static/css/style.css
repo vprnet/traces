@@ -3383,19 +3383,21 @@ html, body {
     border: 0;
     color: #f2f2f2; }
     .navbar a:hover {
-      color: steelblue; }
+      color: #307fe2; }
   .navbar div.icon {
     font-size: 28px; }
-  .navbar #navbar-title {
+  .navbar div.ion-social-facebook {
+    padding-right: 5px; }
+  .navbar #navbar_title {
     color: #f2f2f2;
     font-size: 26px;
-    font-weight: 400;
+    font-weight: 100;
     display: inline;
     position: relative;
     top: 6px;
     left: 15px; }
     @media (max-width: 768px) {
-      .navbar #navbar-title {
+      .navbar #navbar_title {
         display: none; } }
 
 footer {
@@ -5659,18 +5661,13 @@ footer {
 
 body {
   font-family: "Raleway";
-  font-family: "Dosis";
-  font-family: "Roboto";
-  font-family: "Ropa Sans";
   font-family: "Averia Libre";
   color: #f2f2f2; }
-  @media (max-width: 500px) {
-    body {
-      font-family: "Ropa Sans"; } }
 
 img.bg {
   min-height: 100%;
-  min-width: 1024px;
+  min-width: 1500px;
+  max-width: 100%;
   width: 100%;
   height: auto;
   position: fixed;
@@ -5679,34 +5676,42 @@ img.bg {
   z-index: -2; }
 
 h1, h2, h3 {
-  text-align: center; }
+  text-align: center;
+  font-family: "Raleway"; }
 
-h1 {
+a {
+  color: #f2f2f2;
+  border-bottom: 2px solid #f2f2f2; }
+  a:hover {
+    color: #307fe2;
+    border-color: #307fe2;
+    text-decoration: none; }
+
+#landing h1 {
   margin-bottom: 0;
   margin-top: 100px;
   font-size: 124px;
-  font-family: "Roboto";
-  font-family: "Raleway";
-  font-family: "Averia Libre"; }
+  font-weight: 100; }
   @media (max-width: 1200px) {
-    h1 {
+    #landing h1 {
       margin-top: 30px; } }
   @media (max-width: 1000px) {
-    h1 {
+    #landing h1 {
       margin-top: 10px;
       font-size: 82px; } }
   @media (max-width: 768px) {
-    h1 {
+    #landing h1 {
       font-size: 68px; } }
   @media (max-width: 500px) {
-    h1 {
+    #landing h1 {
       font-size: 54px; } }
 
 h2, h3 {
+  font-family: "Roboto";
   text-shadow: 1px 1px #3f4444;
   font-size: 36px;
   margin-top: 0;
-  font-weight: 400; }
+  font-weight: 300; }
   @media (max-width: 1000px) {
     h2, h3 {
       font-size: 32px; } }
@@ -5719,21 +5724,13 @@ h3 {
   @media (max-width: 1200px) {
     h3 {
       margin-top: 40px; } }
-  h3 a {
-    color: #f2f2f2;
-    border-bottom: 2px solid #f2f2f2; }
-    h3 a:hover {
-      color: steelblue;
-      border-color: steelblue;
-      text-decoration: none; }
 
 #explainer {
   margin-top: 35px; }
   #explainer p {
     font-size: 23px;
-    font-weight: 200;
-    line-height: 1.3em;
-    text-shadow: 1px 1px #3f4444; }
+    font-weight: 500;
+    line-height: 1.3em; }
     @media (max-width: 1000px) {
       #explainer p {
         font-size: 20px; } }
@@ -5744,3 +5741,41 @@ h3 {
     @media (max-width: 500px) {
       #explainer p {
         padding: 0 10px; } }
+
+#share {
+  margin-top: 50px; }
+  #share h2 {
+    text-align: center;
+    font-size: 124px;
+    margin-bottom: 0; }
+    #share h2 a {
+      border: 0; }
+  #share h3 {
+    font-family: "Averia Libre";
+    margin: 20px 0; }
+  #share p {
+    font-size: 22px;
+    line-height: 1.2em; }
+  #share #share_what {
+    margin-top: 50px; }
+    #share #share_what h3, #share #share_what p {
+      text-align: left; }
+    #share #share_what p {
+      margin-top: 10px; }
+
+#photo #description {
+  padding: 15px;
+  color: #75787b;
+  background: #f2f2f2; }
+  #photo #description p {
+    font-size: 24px; }
+  #photo #description h4 {
+    font-size: 28px; }
+
+#text p {
+  font-size: 24px; }
+#text #pullquote p {
+  font-size: 64px;
+  text-align: right; }
+#text h4 {
+  font-size: 32px; }

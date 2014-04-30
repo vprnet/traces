@@ -1,18 +1,13 @@
 body {
     font-family: "Raleway";
-    font-family: "Dosis";
-    font-family: "Roboto";
-    font-family: "Ropa Sans";
     font-family: "Averia Libre";
-    @media (max-width: $phone) {
-        font-family: "Ropa Sans";
-    }
     color: $white;
 }
 
 img.bg {
     min-height: 100%;
-    min-width: 1024px;
+    min-width: 1500px;
+    max-width: 100%;
 
     width: 100%;
     height: auto;
@@ -25,14 +20,24 @@ img.bg {
 
 h1, h2, h3 {
     text-align: center;
+    font-family: "Raleway";
 }
 
+a {
+    color: $white;
+    border-bottom: 2px solid $white;
+    &:hover {
+        color: $blue;
+        border-color: $blue;
+        text-decoration: none;
+    }
+}
 
-
-h1 {
+#landing h1 {
     margin-bottom: 0;
     margin-top: 100px;
     font-size: 124px;
+    font-weight: 100;
     @media (max-width: $big-screen) {
         margin-top: 30px;
     }
@@ -46,16 +51,14 @@ h1 {
     @media (max-width: $phone) {
         font-size: 54px;
     }
-    font-family: "Roboto";
-    font-family: "Raleway";
-    font-family: "Averia Libre";
 }
 
 h2, h3 {
+    font-family: "Roboto";
     text-shadow: 1px 1px $black;
     font-size: 36px;
     margin-top: 0;
-    font-weight: 400;
+    font-weight: 300;
     @media (max-width: $laptop) {
         font-size: 32px;
     }
@@ -88,24 +91,14 @@ h3 {
         margin-top: 40px;
     }
     margin-top: 120px;
-    a {
-        color: $white;
-        border-bottom: 2px solid $white;
-        &:hover {
-            color: steelblue;
-            border-color: steelblue;
-            text-decoration: none;
-        }
-    }
 }
 
 #explainer {
     margin-top: 35px;
     p {
         font-size: 23px;
-        font-weight: 200;
+        font-weight: 500;
         line-height: 1.3em;
-        text-shadow: 1px 1px $black;
         @media (max-width: $big-screen) {
         }
         @media (max-width: $laptop) {

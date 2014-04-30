@@ -3,19 +3,19 @@
 {% block title %}{{ page_title }} | VPR{% endblock %}
 
 {% block content %}
-<img class="bg" src="{{ url_for('static', filename='img/vpr-collage-dark.jpg') }}" alt="Blurred background image">
+<img class="bg" src="{{ url_for('static', filename='img/vpr-collage-small.jpg') }}" alt="Blurred background image">
 
-<div class="container">
+<div id="landing" class="container">
     <div class="row">
         <div class="col-xs-12">
             <h1>TRACES</h1>
             <h2>What reminds you?</h2>
             <div id="explainer" class="row">
                 <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-                    <p>Over the past ten years, hundreds of Vermonters have died and thousands have lost control of their lives because of drugs. For their families, friends and communities, daily reminders of that loss&mdash;objects, places, people&mdash;can be anywhere. <em>Traces</em> is a collection of those reminders and the memories they evoke.</p>
+                    <p>Whether you’ve lost a family member to a drug overdose or lost touch with a friend who uses, daily reminders of that loss&mdash;objects, places, people&mdash;can be anywhere. <em>Traces</em> is a collection of those reminders and the memories they evoke.</p>
                 </div>
             </div>
-            <h3><a href="#">Share your story</a></h3>
+            <h3><a href="{{ url_for('share') }}">Share your story</a></h3>
         </div>
     </div>
 </div>

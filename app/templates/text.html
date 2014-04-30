@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_title }} | VPR{% endblock %}
+
+{% block content %}
+<img class="bg" src="{{ url_for('static', filename='img/vpr-collage-small.jpg') }}" alt="Blurred background image">
+
+<div id="text" class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="pullquote">
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>- Cicero</p>
+            </div>
+
+            <h4>Listen to Audio</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script-ck.js') }}"></script>
+{% endblock %}
