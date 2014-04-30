@@ -1,7 +1,11 @@
+@import 'compass/css3';
+
 body {
     font-family: "Raleway";
     font-family: "Averia Libre";
     color: $white;
+    @include background-size(cover);
+    background-image: url('../img/vpr-collage-small.jpg');
 }
 
 img.bg {
@@ -20,6 +24,11 @@ img.bg {
 
 h1, h2, h3 {
     font-family: "Raleway";
+    font-weight: 300;
+}
+
+h3, .h3 {
+    font-size: 30px;
 }
 
 a {
@@ -33,6 +42,8 @@ a {
 }
 
 #landing {
+    text-align: center;
+
     h1 {
         margin-bottom: 0;
         margin-top: 100px;
@@ -95,6 +106,7 @@ a {
 
     #explainer {
         margin-top: 35px;
+        text-align: left;
         p {
             font-size: 23px;
             font-weight: 500;
