@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_title }} | VPR{% endblock %}
+
+{% block content %}
+
+<div id="poster_landing" class="container">
+    <div id="poster_explainer" class="row">
+        <div class="col-xs-12">
+            <h1>TRACES</h1>
+            <h2>What reminds you?</h2>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-sm-12">
+                    <p>Drug addiction affects us all. Whether you’ve lost a family member to a drug overdose or lost touch with a friend who uses, daily reminders of that loss&mdash;objects, places, people&mdash;can be anywhere.</p>
+                    <p><em>Traces</em> is a collection of those reminders and the memories they evoke. Tell us your story and help us explore the deep and subtle ways that drug addiction leaves its mark.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="share_prompt col-sm-6">
+            <h2 class="icon"><a href="mailto:share@vpr.net"><span class="icon ion-camera"></span></a></h2>
+            <h3>Share A Photo</h3>
+            <p>Email us at <a>share@vpr.net</a> with a photograph and a short description of an everyday object, a place, or even a person that reminds you of someone you've lost.</p>
+        </div>
+        <div class="share_prompt col-sm-6">
+            <h2 class="icon"><a href="tel:8025528899"><span class="icon ion-mic-a"></span></a></h2>
+            <h3>Record Your Story</h3>
+            <p>Call us at <a href="tel:8025528899">802-552-8899</a> and leave a message that tells about something, someone, or somewhere that reminds you of someone you've lost to drug addiction.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div id="vpr_project" class="col-xs-12">
+            <p>This Is A <img src="{{ url_for('static', filename='img/logo/vpr-logo-inverted.png') }}"></span> Project</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script-ck.js') }}"></script>
+{% endblock %}

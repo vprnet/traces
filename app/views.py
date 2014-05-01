@@ -87,3 +87,25 @@ def text():
         social=social,
         navbar_h1=navbar_h1,
         page_url=page_url)
+
+
+@app.route('/poster')
+def poster():
+    page_url = BASE_URL + request.path
+    navbar_h1 = True
+    page_title = 'TRACES: Share Your Story'
+
+    social = {
+        'title': "",
+        'subtitle': "",
+        'img': "",
+        'description': "",
+        'twitter_text': "",
+        'twitter_hashtag': ""
+    }
+
+    return render_template('poster.html',
+        page_title=page_title,
+        social=social,
+        navbar_h1=navbar_h1,
+        page_url=page_url)

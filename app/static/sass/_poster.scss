@@ -1,0 +1,99 @@
+body {
+    background-image: none !important;
+}
+
+.navbar {
+    display: none;
+}
+
+#poster_landing {
+    .share_prompt {
+        h3 {
+            text-align: center;
+        }
+    }
+    span.icon {
+        font-size: 124px;
+        color: $black;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 0;
+        a {
+            border: 0;
+        }
+    }
+    h3 {
+        margin: 20px 0;
+    }
+    p {
+        font-size: 20px;
+        line-height: 1.2em;
+        text-align: left;
+        font-weight: 400;
+        a {
+            color: $black;
+            border-bottom: 1px solid $black;
+        }
+    }
+    text-align: center;
+
+    h1 {
+        margin-bottom: 0;
+        font-size: 82px;
+        font-weight: 100;
+        margin-top: .5em;
+    }
+
+    h2, h3 {
+        font-size: 36px;
+        margin-top: 0;
+        font-weight: 300;
+        @media (max-width: $laptop) {
+            font-size: 32px;
+        }
+        @media (max-width: $tablet) {
+            font-size: 24px;
+        }
+        @media (max-width: $phone) {
+        }
+    }
+
+    h2 {
+        margin-bottom: 1em;
+    }
+    h2.icon {
+        margin-bottom: .5em;
+    }
+    .pill {
+        font-size: 2em;
+        @include transition(all 0.25s);
+
+        &:hover {
+            color: #000;
+            background-color: #fff;
+            border-color: #fff;
+        }
+    }
+
+    #poster_explainer {
+        margin-bottom: 50px;
+        p {
+            text-align: left;
+            font-weight: 500;
+            line-height: 1.3em;
+            margin-bottom: 1em !important;
+        }
+    }
+}
+
+#vpr_project {
+    margin-top: 80px;
+    p {
+        text-align: center;
+    }
+    img {
+        position: relative;
+        top: 3px;
+    }
+}

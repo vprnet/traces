@@ -8,15 +8,23 @@
 @import "share";
 @import "photo";
 @import "text";
+@import "poster";
 
 body {
     font-family: "Raleway";
     font-weight: 300;
     // font-family: "Averia Libre";
-    color: $white;
+    color: $black;
     @include background-size(cover);
-    background-image: url('../img/vpr-collage-small.jpg');
+    background-image: url('../img/vpr-collage-light.jpg');
     // -webkit-font-smoothing: antialiased;
+}
+
+footer {
+    p {
+        color: $black;
+        font-weight: 500;
+    }
 }
 
 img.bg {
