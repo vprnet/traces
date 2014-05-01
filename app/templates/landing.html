@@ -3,7 +3,6 @@
 {% block title %}{{ page_title }} | VPR{% endblock %}
 
 {% block content %}
-<img class="bg" src="{{ url_for('static', filename='img/vpr-collage-small.jpg') }}" alt="Blurred background image">
 
 <div id="landing" class="container">
     <div class="row">
@@ -15,7 +14,7 @@
                     <p>Whether you’ve lost a family member to a drug overdose or lost touch with a friend who uses, daily reminders of that loss&mdash;objects, places, people&mdash;can be anywhere. <em>Traces</em> is a collection of those reminders and the memories they evoke.</p>
                 </div>
             </div>
-            <h3><a href="{{ url_for('share') }}">Share your story</a></h3>
+            <p><a class="pill" href="{{ url_for('share') }}">Share your story</a></p>
         </div>
     </div>
 </div>
