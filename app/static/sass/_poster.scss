@@ -1,5 +1,4 @@
 body {
-    background-image: none !important;
 }
 
 .navbar {
@@ -33,7 +32,8 @@ body {
         font-weight: 400;
         a {
             color: $black;
-            border-bottom: 1px solid $black;
+            font-weight: 600;
+            border-bottom: 0;
         }
     }
     text-align: center;
@@ -41,8 +41,8 @@ body {
     h1 {
         margin-bottom: 0;
         font-size: 82px;
-        font-weight: 100;
-        margin-top: .5em;
+        font-weight: 200;
+        margin-top: .8em;
     }
 
     h2, h3 {
@@ -88,12 +88,13 @@ body {
 }
 
 #vpr_project {
-    margin-top: 80px;
+    margin-top: 60px;
     p {
         text-align: center;
     }
     img {
         position: relative;
-        top: 3px;
+        top: 4px;
+        left: 2px;
     }
 }
