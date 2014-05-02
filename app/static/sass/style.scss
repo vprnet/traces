@@ -20,6 +20,14 @@ body {
     // -webkit-font-smoothing: antialiased;
 }
 
+div#opaque_bg {
+    opacity: 0.6;
+    background: white;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
 footer {
     p {
         color: $black;

@@ -42,7 +42,7 @@ body {
         margin-bottom: 0;
         font-size: 82px;
         font-weight: 200;
-        margin-top: .8em;
+        margin-top: .5em;
     }
 
     h2, h3 {
@@ -77,7 +77,7 @@ body {
     }
 
     #poster_explainer {
-        margin-bottom: 50px;
+        margin-bottom: 30px;
         p {
             text-align: left;
             font-weight: 500;
@@ -87,8 +87,16 @@ body {
     }
 }
 
+p#url {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 300;
+    margin-bottom: 0;
+    margin-top: 50px;
+}
+
 #vpr_project {
-    margin-top: 60px;
+    margin-top: 40px;
     p {
         text-align: center;
     }
