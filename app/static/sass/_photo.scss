@@ -1,12 +1,21 @@
-#photo {
-    #description {
-        padding: 15px;
+.not_glass {
+    padding: 20px;
+    background: $white;
+    color: $black;
+    p {
+        font-weight: 400;
         color: $gray;
-        background: $white;
+    }
+}
+div.photo_card {
+    img {
+        margin-bottom: 15px;
+    }
+    .photo_copy {
         p {
             font-size: 24px;
         }
-        h4 {
+        h2 {
             font-size: 28px;
         }
     }

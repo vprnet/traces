@@ -16,6 +16,7 @@ body {
     color: $white;
     @include background-size(cover);
     background-image: url('../img/vpr-collage-small.jpg');
+    background-attachment: fixed;
     // -webkit-font-smoothing: antialiased;
 }
 
@@ -48,10 +49,8 @@ p {
 
 a {
     color: $white;
-    border-bottom: 2px solid $white;
     &:hover {
         color: $blue;
-        border-color: $blue;
         text-decoration: none;
     }
 }
@@ -63,4 +62,11 @@ a {
     border: 2px solid #fff;
     font-family: "Raleway";
     font-weight: 300;
+}
+
+.glass {
+    padding: 20px;
+    background: rgba(20,20,20,0.5);
+    @include border-radius(5px);
+    border: 2px solid rgba(20,20,20,0.6);
 }

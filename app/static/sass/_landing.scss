@@ -1,9 +1,10 @@
 #landing {
-    text-align: center;
-
+    h1, h2, #share_pill {
+        text-align: center;
+    }
     h1 {
         margin-bottom: 0;
-        margin-top: 100px;
+        margin-top: 1em;
         font-size: 124px;
         font-weight: 100;
         @media (max-width: $big-screen) {
@@ -20,11 +21,11 @@
             font-size: 54px;
         }
     }
-
-    h2, h3 {
+    h2 {
         font-size: 36px;
-        margin-top: 0;
         font-weight: 300;
+        margin-top: 0;
+        margin-bottom: .7em;
         @media (max-width: $laptop) {
             font-size: 32px;
         }
@@ -34,35 +35,32 @@
         @media (max-width: $phone) {
         }
     }
-
-    h2 {
-        @media (max-width: $phone) {
-        }
-        @media (max-width: $tablet) {
-        }
-        @media (max-width: $laptop) {
-        }
-        @media (max-width: $big-screen) {
+    div.explainer {
+        p {
+            font-size: 23px;
+            font-weight: 500;
+            line-height: 1.3em;
+            margin-bottom: 3em;
+            @media (max-width: $big-screen) {
+            }
+            @media (max-width: $laptop) {
+                font-size: 20px;
+            }
+            @media (max-width: $tablet) {
+                font-size: 18px;
+                padding: 0 30px;
+            }
+            @media (max-width: $phone) {
+                padding: 0 10px;
+            }
         }
     }
-
-    h3 {
-        @media (max-width: $phone) {
-        }
-        @media (max-width: $tablet) {
-        }
-        @media (max-width: $laptop) {
-        }
-        @media (max-width: $big-screen) {
-            margin-top: 40px;
-        }
-        margin-top: 120px;
-    }
-
     .pill {
         font-size: 2em;
+        @media (max-width: $tablet) {
+            font-size: 1.5em;
+        }
         @include transition(all 0.25s);
-
         &:hover {
             color: #000;
             background-color: #fff;
@@ -71,25 +69,3 @@
     }
 }
 
-#explainer {
-    margin-top: 35px;
-    text-align: left;
-    p {
-        font-size: 23px;
-        font-weight: 500;
-        line-height: 1.3em;
-        margin-bottom: 3em;
-        @media (max-width: $big-screen) {
-        }
-        @media (max-width: $laptop) {
-            font-size: 20px;
-        }
-        @media (max-width: $tablet) {
-            font-size: 18px;
-            padding: 0 30px;
-        }
-        @media (max-width: $phone) {
-            padding: 0 10px;
-        }
-    }
-}
