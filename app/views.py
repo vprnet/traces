@@ -6,13 +6,13 @@ from config import BASE_URL
 @app.route('/')
 def index():
     page_url = BASE_URL + request.path
-    page_title = 'Traces'
+    page_title = 'Traces: What Reminds You'
 
     social = {
-        'title': "",
-        'subtitle': "",
-        'img': "",
-        'description': "",
+        'title': "Traces",
+        'subtitle': "What Reminds You",
+        'img': "http://www.vpr.net/apps/traces/static/vpr-traces-social-image.jpg",
+        'description': "Whether you've lost a family member to a drug overdose or lost touch with a friend who uses, daily reminders of that loss--objects, places, people--can be anywhere. Traces is a collection of those reminders and the memories they evoke.",
         'twitter_text': "",
         'twitter_hashtag': ""
     }
@@ -30,10 +30,10 @@ def share():
     page_title = 'TRACES: Share Your Story'
 
     social = {
-        'title': "",
-        'subtitle': "",
-        'img': "",
-        'description': "",
+        'title': "Traces",
+        'subtitle': "What Reminds You",
+        'img': "http://www.vpr.net/apps/traces/static/vpr-traces-social-image.jpg",
+        'description': "Whether you've lost a family member to a drug overdose or lost touch with a friend who uses, daily reminders of that loss--objects, places, people--can be anywhere. Traces is a collection of those reminders and the memories they evoke.",
         'twitter_text': "",
         'twitter_hashtag': ""
     }
