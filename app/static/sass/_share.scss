@@ -1,4 +1,9 @@
 #share {
+    .pull_right {
+        @media (min-width: $laptop) {
+            margin-right: -10px;
+        }
+    }
     p {
         font-size: 22px;
         line-height: 1.2em;
