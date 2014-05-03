@@ -9,12 +9,12 @@ def index():
     page_title = 'Traces: What Reminds You'
 
     social = {
-        'title': "Traces",
-        'subtitle': "What Reminds You",
-        'img': "http://www.vpr.net/apps/traces/static/vpr-traces-social-image.jpg",
-        'description': "Whether you've lost a family member to a drug overdose or lost touch with a friend who uses, daily reminders of that loss--objects, places, people--can be anywhere. Traces is a collection of those reminders and the memories they evoke.",
-        'twitter_text': "",
-        'twitter_hashtag': ""
+        'title': "Traces: Share Your Story",
+        'subtitle': "",
+        'img': "http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg",
+        'description': "When you've lost - or lost touch with - a relative or friend because of drug addiction, reminders of that person can be anywhere. Help VPR build a collection of those reminders and the memories they evoke.",
+        'twitter_text': "Have you lost - or lost touch with - someone because of drug addiction? Share your story:",
+        'twitter_hashtag': "VT, VtTraces"
     }
 
     return render_template('landing.html',
@@ -30,12 +30,12 @@ def share():
     page_title = 'TRACES: Share Your Story'
 
     social = {
-        'title': "Traces",
-        'subtitle': "What Reminds You",
-        'img': "http://www.vpr.net/apps/traces/static/vpr-traces-social-image.jpg",
-        'description': "Whether you've lost a family member to a drug overdose or lost touch with a friend who uses, daily reminders of that loss--objects, places, people--can be anywhere. Traces is a collection of those reminders and the memories they evoke.",
-        'twitter_text': "",
-        'twitter_hashtag': ""
+        'title': "Traces: Share Your Story",
+        'subtitle': "",
+        'img': "http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg",
+        'description': "When you've lost - or lost touch with - a relative or friend because of drug addiction, reminders of that person can be anywhere. Help VPR build a collection of those reminders and the memories they evoke.",
+        'twitter_text': "Have you lost - or lost touch with - someone because of drug addiction? Share your story:",
+        'twitter_hashtag': "VT, VtTraces"
     }
 
     return render_template('share.html',
