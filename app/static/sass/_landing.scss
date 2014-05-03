@@ -1,4 +1,12 @@
+.inherit_height {
+    height: 100%;
+}
+
 #landing {
+    .glass {
+        padding: 40px !important;
+        height: 100%;
+    }
     h1, h2, #share_pill {
         text-align: center;
     }
@@ -34,6 +42,7 @@
         }
     }
     div.explainer {
+        padding-left: 10px;
         p {
             font-size: 23px;
             font-weight: 500;

@@ -67,6 +67,9 @@ html, body {
         position: relative;
         top: 6px;
         left: 15px;
+        a:hover {
+            color: lighten($blue, 10%);
+        }
         @media (max-width: $tablet) {
             display: none;
         }
