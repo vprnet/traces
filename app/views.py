@@ -1,12 +1,14 @@
 from index import app
 from flask import render_template, request
 from config import BASE_URL
+from query import get_submission, get_slugs
 
 
 @app.route('/')
 def index():
     page_url = BASE_URL + request.path
     page_title = 'Traces: What Reminds You'
+    slugs = get_slugs(title=False)
 
     social = {
         'title': "Traces: Share Your Story",
@@ -20,6 +22,7 @@ def index():
     return render_template('landing.html',
         page_title=page_title,
         social=social,
+        slugs=slugs,
         page_url=page_url)
 
 
@@ -45,11 +48,13 @@ def share():
         page_url=page_url)
 
 
-@app.route('/photo')
-def photo():
+@app.route('/<title>')
+def post(title):
     page_url = BASE_URL + request.path
     navbar_h1 = True
     page_title = 'TRACES: What Reminds You?'
+    submission = get_submission(title)
+    slugs, links = get_slugs(title)
 
     social = {
         'title': "",
@@ -60,30 +65,11 @@ def photo():
         'twitter_hashtag': ""
     }
 
-    return render_template('photo.html',
+    return render_template('submission.html',
         page_title=page_title,
         social=social,
         navbar_h1=navbar_h1,
-        page_url=page_url)
-
-
-@app.route('/text')
-def text():
-    page_url = BASE_URL + request.path
-    navbar_h1 = True
-    page_title = 'TRACES: What Reminds You?'
-
-    social = {
-        'title': "",
-        'subtitle': "",
-        'img': "",
-        'description': "",
-        'twitter_text': "",
-        'twitter_hashtag': ""
-    }
-
-    return render_template('text.html',
-        page_title=page_title,
-        social=social,
-        navbar_h1=navbar_h1,
+        submission=submission,
+        slugs=slugs,
+        links=links,
         page_url=page_url)

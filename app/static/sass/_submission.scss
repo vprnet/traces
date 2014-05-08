@@ -1,0 +1,31 @@
+img {
+    margin: 0 auto 15px;
+    height: 50%;
+}
+.photo_copy {
+    p {
+        font-size: 24px;
+    }
+    h2 {
+        font-size: 28px;
+    }
+}
+
+div.container {
+    position: relative;
+}
+
+.chevrons {
+    .next, .prev {
+        color: white;
+        position: absolute;
+        top: 40%;
+        font-size: 92px;
+    }
+    .next {
+        right: 0;
+    }
+    .prev {
+        left: 0;
+    }
+}
