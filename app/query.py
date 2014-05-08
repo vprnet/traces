@@ -79,10 +79,10 @@ def get_slugs(title):
     slugs = [slugify(unicode(i['title'])) for i in all_submissions]
 
     links = False
+    next = False
+    prev = False
     for i in range(len(slugs)):
         if title == slugs[i]:
-            next = False
-            prev = False
             if i + 1 < len(slugs):
                 next = slugs[i + 1]
             if i > 0:

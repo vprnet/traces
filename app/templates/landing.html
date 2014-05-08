@@ -5,6 +5,11 @@
 {% block content %}
 
 <div id="landing" class="container">
+    <div class="chevrons">
+        <a href="{{ url_for('post', title=slugs.0) }}">
+            <i class="next icon ion-ios7-arrow-right"></i>
+        </a>
+    </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
             <h1>TRACES</h1>

@@ -8,7 +8,7 @@ from query import get_submission, get_slugs
 def index():
     page_url = BASE_URL + request.path
     page_title = 'Traces: What Reminds You'
-    slugs = get_slugs(title=False)
+    slugs, links = get_slugs(title=False)
 
     social = {
         'title': "Traces: Share Your Story",
