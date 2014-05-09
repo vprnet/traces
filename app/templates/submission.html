@@ -19,9 +19,10 @@
     <ul class="bxslider row">
     {% for slug in slugs %}
         {% if slug == submission.slug %}
-            <li id="{{ submission.slug }}">
+            <!--Submission-->
+            <li>
                 <div class="col-sm-10 col-sm-offset-1">
-                    <div class="submission glass">
+                    <div id="{{ submission.slug }}" class="submission glass">
                         {% if submission.image %}
                             <img class="img-responsive" src="{{ submission.image }}">
                             <div class="photo_copy">
@@ -38,9 +39,10 @@
                 </div>
             </li>
         {% elif slug == next_trace.slug %}
-            <li id="{{ next_trace.slug }}">
+            <!--Next Trace-->
+            <li>
                 <div class="col-sm-10 col-sm-offset-1">
-                    <div class="next_trace glass">
+                    <div id="{{ next_trace.slug }}" class="next_trace glass">
                         {% if next_trace.image %}
                             <img class="img-responsive" src="{{ next_trace.image }}">
                             <div class="photo_copy">
@@ -57,8 +59,11 @@
                 </div>
             </li>
         {% else %}
-            <li id="{{ slug }}">
+            <!-- other -->
+            <li>
                 <div class="col-sm-10 col-sm-offset-1">
+                    <div id="{{ slug }}">
+                    </div>
                 </div>
             </li>
         {% endif %}
