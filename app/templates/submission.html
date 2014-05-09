@@ -17,25 +17,27 @@
     </div>
 
     <ul class="bxslider row">
-        <li id="{{ submission.slug }}">
-            <div class="col-sm-10 col-sm-offset-1">
-                <div class="submission glass">
-                    {% if submission.image %}
-                        <img class="img-responsive" src="{{ submission.image }}">
-                        <div class="photo_copy">
-                            <p>{{ submission['copy'] }}</p>
-                            <h2>-{{ submission.attribution }}</h2>
-                        </div>
-                    {% elif submission.audio %}
-                        <div class="pull_quote">
-                            <p>{{ submission['copy'] }}</p>
-                            <h2>{{ submission.attribution }}</h2>
-                        </div>
-                    {% endif %}
+    {% for slug in slugs %}
+        {% if slug == submission.slug %}
+            <li id="{{ submission.slug }}">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="submission glass">
+                        {% if submission.image %}
+                            <img class="img-responsive" src="{{ submission.image }}">
+                            <div class="photo_copy">
+                                <p>{{ submission['copy'] }}</p>
+                                <h2>-{{ submission.attribution }}</h2>
+                            </div>
+                        {% elif submission.audio %}
+                            <div class="pull_quote">
+                                <p>{{ submission['copy'] }}</p>
+                                <h2>{{ submission.attribution }}</h2>
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-        </li>
-        {% if next_trace %}
+            </li>
+        {% elif slug == next_trace.slug %}
             <li id="{{ next_trace.slug }}">
                 <div class="col-sm-10 col-sm-offset-1">
                     <div class="next_trace glass">
@@ -54,7 +56,14 @@
                     </div>
                 </div>
             </li>
+        {% else %}
+            <li id="{{ slug }}">
+                <div class="col-sm-10 col-sm-offset-1">
+                </div>
+            </li>
         {% endif %}
+    {% endfor %}
+
     </ul>
 </div>
 {% endblock %}

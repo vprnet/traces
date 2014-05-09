@@ -5,9 +5,12 @@
 
 var VPR = VPR || {};
 
+VPR.activeIndex = VPR.submissions.indexOf(VPR.activeSlide);
+
 var slider = $('.bxslider').bxSlider({
   infiniteLoop: false,
-  controls: false
+  controls: false,
+  startslide: VPR.activeIndex
 });
 
 $('#slider_next').click(function(event) {
@@ -22,17 +25,18 @@ $('#slider_prev').click(function(event) {
     return false;
 });
 
-
-VPR.activeIndex = VPR.submissions.indexOf(VPR.activeSlide);
-
-VPR.getPrevious = function() {
-    var prevSlug = VPR.submissions[(VPR.activeIndex - 1)];
-    $.get('/' + prevSlug, function(data) {
-        VPR.prevSlide = $(data).find('#' + prevSlug);
-        VPR.prevSlide.insertBefore('#' + VPR.activeSlide);
-    });
+VPR.slide = $('#' + VPR.activeSlide);
+VPR.onDeck = $('#' + VPR.submissions[VPR.activeIndex + 2]);
+VPR.getOnDeck = function() {
+    if (VPR.activeIndex + 1 < VPR.submissions.length) {
+        var onDeckID = VPR.submissions[VPR.activeIndex + 2];
+        $.get('/' + onDeckID, function(data) {
+            var onDeckSlide = $(data).find('#' + onDeckID);
+            VPR.onDeck.replaceWith(onDeckSlide);
+        });
+    }
 };
 
 $(document).ready(function () {
-    VPR.getPrevious();
+    VPR.getOnDeck();
 });
