@@ -67,16 +67,23 @@ def slugify(text, delim=u'-'):
 def get_submission(title):
     all_submissions = get_google_sheet()
     matched = False
+    next_trace = False
     for submission in all_submissions:
-        if title == slugify(unicode(submission['title'])):
+        name = slugify(unicode(submission['title']))
+        if title == name:
             matched = submission
             matched['slug'] = title
-    return matched
+        if matched:
+            next_trace = submission
+            next_trace['slug'] = name
+
+    return matched, next_trace
 
 
 def get_slugs(title):
     all_submissions = get_google_sheet()
     slugs = [slugify(unicode(i['title'])) for i in all_submissions]
+    print slugs
 
     links = False
     next = False

@@ -53,7 +53,7 @@ def post(title):
     page_url = BASE_URL + request.path
     navbar_h1 = True
     page_title = 'TRACES: What Reminds You?'
-    submission = get_submission(title)
+    submission, next_trace = get_submission(title)
     slugs, links = get_slugs(title)
 
     social = {
@@ -72,4 +72,5 @@ def post(title):
         submission=submission,
         slugs=slugs,
         links=links,
+        next_trace=next_trace,
         page_url=page_url)

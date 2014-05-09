@@ -7,6 +7,7 @@
 @import "landing";
 @import "share";
 @import "submission";
+@import "bxslider";
 
 body {
     font-family: "Raleway";
@@ -64,7 +65,6 @@ a {
 }
 
 .glass {
-    height: 80%;
     width: 100%;
     padding: 20px;
     background: rgba(20,20,20,0.5);
