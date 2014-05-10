@@ -5,11 +5,9 @@
 {% block content %}
 <div class="container">
     <div class="chevrons">
-    {% if links.next %}
         <a href="{{ url_for('post', title=links.next) }}">
             <i id="slider_next" class="next icon ion-ios7-arrow-right"></i>
         </a>
-    {% endif %}
         <a href={% if links.prev %}"{{ url_for('post', title=links.prev) }}"
             {% else %}"{{ url_for('index') }}"{% endif %}>
             <i id="slider_prev" class="prev icon ion-ios7-arrow-left"></i>

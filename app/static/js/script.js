@@ -40,12 +40,14 @@ VPR.onDeck = function(idx) {
 };
 
 VPR.getOnDeck = function(idx) {
-    if (idx + 1 < VPR.submissions.length) {
+    if (idx + 2 < VPR.submissions.length) {
         var onDeckID = VPR.submissions[idx + 2];
-        $.get('/' + onDeckID, function(data) {
-            var onDeckSlide = $(data).find('#' + onDeckID);
-            VPR.onDeck(idx).replaceWith(onDeckSlide);
-        });
+        if (!VPR.onDeck(idx).find('h2').length) {
+            $.get('/' + onDeckID, function(data) {
+                var onDeckSlide = $(data).find('#' + onDeckID);
+                VPR.onDeck(idx).replaceWith(onDeckSlide);
+            });
+        }
     }
 };
 
@@ -60,11 +62,13 @@ VPR.prevSlide = function(idx) {
 VPR.getPrevSlide = function(idx) {
     if (idx > 1) {
         var prevSlideID = VPR.submissions[idx - 1];
-        // this own't work for index
-        $.get('/' + prevSlideID, function(data) {
-            var prevSlide = $(data).find('#' + prevSlideID);
-            VPR.prevSlide(idx).replaceWith(prevSlide);
-        });
+        if (!VPR.prevSlide(idx).find('h2').length) {
+            // this own't work for index
+            $.get('/' + prevSlideID, function(data) {
+                var prevSlide = $(data).find('#' + prevSlideID);
+                VPR.prevSlide(idx).replaceWith(prevSlide);
+            });
+        }
     }
 };
 
