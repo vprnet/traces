@@ -8,6 +8,8 @@ venv
 trash
 app/static/img/thumbnails
 .sass-cache
+node_modules
+app/static/js/libs
 
 # C extensions
 *.so

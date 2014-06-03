@@ -1,0 +1,22 @@
+{
+  "name": "vt-map-maker",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "~1.10.2",
+    "bootstrap": "~3.1.1"
+  },
+  "private": true,
+  "homepage": "https://www.vpr.net/apps/traces",
+  "authors": [
+    "Matt Parrilla <matthew.parrilla@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "js/libs",
+    "test",
+    "tests"
+  ]
+}

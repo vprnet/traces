@@ -1,8 +1,3 @@
-/**
- * @depends svg-support.js
- * @depends jquery.bxslider.js
- */
-
 var VPR = VPR || {};
 
 VPR.activeIndex = VPR.submissions.indexOf(VPR.activeSlide);
