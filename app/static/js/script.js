@@ -8,6 +8,7 @@ VPR.activeIndex = typeof VPR.submissions !== 'undefined' ? VPR.submissions.index
 slider.bxSlider({
     infiniteLoop: false,
     controls: false,
+    adaptiveHeight: true,
     startSlide: VPR.activeIndex
 });
 
