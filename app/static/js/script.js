@@ -1,29 +1,37 @@
 var VPR = VPR || {};
 
-VPR.activeIndex = VPR.submissions.indexOf(VPR.activeSlide);
+VPR.activeIndex = typeof VPR.submissions !== 'undefined' ? VPR.submissions.indexOf(VPR.activeSlide) : null;
 
 var slider = $('.bxslider').bxSlider({
-  infiniteLoop: false,
-  controls: false,
-  startSlide: VPR.activeIndex - 1
+    infiniteLoop: false,
+    controls: false,
+    startSlide: VPR.activeIndex
 });
 
 $('#slider_next').click(function(event) {
     event.preventDefault();
-    slider.goToNextSlide();
-    ++VPR.activeIndex;
-    VPR.getOnDeck(VPR.activeIndex);
-    History.pushState(null, null, VPR.submissions[VPR.activeIndex]);
+    if ( VPR.activeIndex < slider.getSlideCount() - 1 ) {
+        VPR.activeIndex++;
+        History.pushState(null, null, VPR.submissions[VPR.activeIndex]);
+    }
+
     return false;
 });
 
 $('#slider_prev').click(function(event) {
     event.preventDefault();
-    slider.goToPrevSlide();
-    --VPR.activeIndex;
-    VPR.getPrevSlide(VPR.activeIndex);
-    History.pushState(null, null, VPR.submissions[VPR.activeIndex]);
+    if ( VPR.activeIndex > 0 ) {
+        VPR.activeIndex--;
+        History.pushState(null, null, VPR.submissions[VPR.activeIndex]);
+    }
+
     return false;
+});
+
+History.Adapter.bind(window, 'statechange', function () {
+    slider.goToSlide(VPR.activeIndex);
+    VPR.getNextSlide();
+    VPR.getPrevSlide();
 });
 
 VPR.slide = $('#' + VPR.activeSlide);
@@ -33,20 +41,6 @@ VPR.onDeck = function(idx) {
         return $('#' + VPR.submissions[idx + 2]);
     } else {
         return false;
-    }
-};
-
-VPR.getOnDeck = function() {
-    var idx = VPR.activeIndex;
-    if (idx + 2 < VPR.submissions.length) {
-        var onDeckID = VPR.submissions[idx + 2];
-        if (!VPR.onDeck(idx).find('h2').length) {
-            $.get('/' + onDeckID, function(data) {
-                var onDeckSlide = $(data).find('#' + onDeckID);
-                VPR.onDeck(idx).replaceWith(onDeckSlide);
-            });
-        }
-    VPR.getPrevSlide();
     }
 };
 
@@ -72,7 +66,21 @@ VPR.getPrevSlide = function() {
     }
 };
 
+VPR.getNextSlide = function() {
+    var idx = VPR.activeIndex;
+    if (idx + 2 < VPR.submissions.length) {
+        var onDeckID = VPR.submissions[idx + 2];
+        if (!VPR.onDeck(idx).find('h2').length) {
+            $.get('/' + onDeckID, function(data) {
+                var onDeckSlide = $(data).find('#' + onDeckID);
+                VPR.onDeck(idx).replaceWith(onDeckSlide);
+            });
+        }
+    }
+};
+
 
 $(document).ready(function () {
-    VPR.getOnDeck();
+    VPR.getNextSlide();
+    VPR.getPrevSlide();
 });

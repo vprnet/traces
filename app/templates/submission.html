@@ -5,12 +5,12 @@
 {% block content %}
 <div class="container">
     <div class="chevrons">
-        <a href="{{ url_for('post', title=links.next) }}">
-            <i id="slider_next" class="next icon ion-ios7-arrow-right"></i>
+        <a id="slider_next" class="next" href="{{ url_for('post', title=links.next) }}">
+            <i class="icon ion-ios7-arrow-right"></i>
         </a>
-        <a href={% if links.prev %}"{{ url_for('post', title=links.prev) }}"
+        <a id="slider_prev" class="prev" href={% if links.prev %}"{{ url_for('post', title=links.prev) }}"
             {% else %}"{{ url_for('index') }}"{% endif %}>
-            <i id="slider_prev" class="prev icon ion-ios7-arrow-left"></i>
+            <i class="icon ion-ios7-arrow-left"></i>
         </a>
     </div>
 
@@ -84,7 +84,6 @@ var VPR = VPR || {};
 VPR.activeSlide = '{{ submission.slug }}';
 
 VPR.submissions = [
-    '',
     {% for slug in slugs %}
     '{{ slug }}',
     {% endfor %}

@@ -15,10 +15,14 @@ div.container {
 }
 
 .chevrons {
-    .next, .prev {
-        color: white;
+    .next,
+    .prev {
+        display: block;
+        padding: 0 20px;
         position: absolute;
         top: 40%;
+        z-index: 1;
+        color: white;
         font-size: 92px;
     }
     .next {
