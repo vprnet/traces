@@ -32,6 +32,11 @@
                                 <p>{{ submission['copy'] }}</p>
                                 <h2>{{ submission.attribution }}</h2>
                             </div>
+                        {% else %}
+                            <div class="pull_quote">
+                                <p>{{ submission['copy'] }}</p>
+                                <h2>{{ submission.attribution }}</h2>
+                            </div>
                         {% endif %}
                     </div>
                 </div>
@@ -79,7 +84,7 @@ var VPR = VPR || {};
 VPR.activeSlide = '{{ submission.slug }}';
 
 VPR.submissions = [
-    'landing',
+    '',
     {% for slug in slugs %}
     '{{ slug }}',
     {% endfor %}
