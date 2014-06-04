@@ -13,6 +13,7 @@ $('#slider_next').click(function(event) {
     slider.goToNextSlide();
     ++VPR.activeIndex;
     VPR.getOnDeck(VPR.activeIndex);
+    History.pushState(null, null, VPR.submissions[VPR.activeIndex]);
     return false;
 });
 
@@ -21,6 +22,7 @@ $('#slider_prev').click(function(event) {
     slider.goToPrevSlide();
     --VPR.activeIndex;
     VPR.getPrevSlide(VPR.activeIndex);
+    History.pushState(null, null, VPR.submissions[VPR.activeIndex]);
     return false;
 });
 
@@ -34,7 +36,8 @@ VPR.onDeck = function(idx) {
     }
 };
 
-VPR.getOnDeck = function(idx) {
+VPR.getOnDeck = function() {
+    var idx = VPR.activeIndex;
     if (idx + 2 < VPR.submissions.length) {
         var onDeckID = VPR.submissions[idx + 2];
         if (!VPR.onDeck(idx).find('h2').length) {
@@ -43,6 +46,7 @@ VPR.getOnDeck = function(idx) {
                 VPR.onDeck(idx).replaceWith(onDeckSlide);
             });
         }
+    VPR.getPrevSlide();
     }
 };
 
@@ -54,7 +58,8 @@ VPR.prevSlide = function(idx) {
     }
 };
 
-VPR.getPrevSlide = function(idx) {
+VPR.getPrevSlide = function() {
+    var idx = VPR.activeIndex;
     if (idx > 1) {
         var prevSlideID = VPR.submissions[idx - 1];
         if (!VPR.prevSlide(idx).find('h2').length) {
@@ -69,6 +74,5 @@ VPR.getPrevSlide = function(idx) {
 
 
 $(document).ready(function () {
-    VPR.getPrevSlide(VPR.activeIndex);
-    VPR.getOnDeck(VPR.activeIndex);
+    VPR.getOnDeck();
 });

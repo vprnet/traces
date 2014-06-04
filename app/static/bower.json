@@ -1,9 +1,12 @@
 {
-  "name": "vt-map-maker",
+  "name": "vpr-traces",
   "version": "0.0.1",
   "dependencies": {
     "jquery": "~1.10.2",
-    "bootstrap": "~3.1.1"
+    "bootstrap": "~3.1.1",
+    "history.js": "~1.8.0",
+    "bxslider-4-kallisto": "~4.1.2",
+    "modernizr": "~2.8.2"
   },
   "private": true,
   "homepage": "https://www.vpr.net/apps/traces",

@@ -16,7 +16,8 @@ module.exports = function (grunt) {
                     'js/libs/jquery/jquery.js',
                     'js/libs/bootstrap/dist/js/bootstrap.js',
                     'js/libs/modernizr/modernizr-custom.js',
-                    'js/libs/bxslider/source/jquery.bxSlider.js',
+                    'js/libs/bxslider-4-kallisto/jquery.bxslider.js',
+                    'js/libs/history.js/scripts/bundled-uncompressed/html4+html5/jquery.history.js',
                     'js/svg-support.js',
                     'js/script.js'
                 ],
