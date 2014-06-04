@@ -15,8 +15,7 @@ next.click(function(event) {
     event.preventDefault();
 
     if ( VPR.activeIndex < slider.getSlideCount() - 1 ) {
-        VPR.activeIndex++;
-        History.pushState(null, null, VPR.submissions[VPR.activeIndex]);
+        History.pushState({slide: VPR.activeIndex + 1}, null, VPR.submissions[VPR.activeIndex + 1]);
     }
 });
 
@@ -24,61 +23,48 @@ prev.click(function(event) {
     event.preventDefault();
 
     if ( VPR.activeIndex > 0 ) {
-        VPR.activeIndex--;
-        History.pushState(null, null, VPR.submissions[VPR.activeIndex]);
+        History.pushState({slide: VPR.activeIndex - 1}, null, VPR.submissions[VPR.activeIndex - 1]);
     }
 });
 
 History.Adapter.bind(window, 'statechange', function () {
+    var state = History.getState();
+
+    VPR.activeIndex = state.data.slide;
+
     slider.goToSlide(VPR.activeIndex);
-    VPR.getNextSlide();
-    VPR.getPrevSlide();
+    VPR.getAdjacentSlides();
 });
 
-VPR.onDeck = function(idx) {
-    if (typeof VPR.submissions[idx + 2] !== undefined) {
-        return $('#' + VPR.submissions[idx + 2]);
-    } else {
-        return false;
+VPR.loadSlide = function (idx) {
+    var slideID = VPR.submissions[idx];
+
+    // If the slide does not have any content
+    if (!$('#' + slideID).children().length) {
+        // Load the page of the slide with AJAX
+        $.get('/' + slideID, function(data) {
+            // grab the slide from the returned page content
+            var slide = $(data).find('#' + slideID);
+            // replace the slide container with the actual slide content
+            $('#' + slideID).replaceWith(slide);
+        });
     }
 };
 
-VPR.prevSlide = function(idx) {
-    if (typeof VPR.submissions[idx - 1] !== undefined) {
-        return $('#' + VPR.submissions[idx - 1]);
-    } else {
-        return false;
-    }
-};
+VPR.getAdjacentSlides = function() {
+    var idx = VPR.activeIndex,
+        next = idx + 2,
+        prev = idx - 1;
 
-VPR.getPrevSlide = function() {
-    var idx = VPR.activeIndex;
     if (idx >= 1) {
-        var prevSlideID = VPR.submissions[idx - 1];
-        if (!VPR.prevSlide(idx).find('h2').length) {
-            // this own't work for index
-            $.get('/' + prevSlideID, function(data) {
-                var prevSlide = $(data).find('#' + prevSlideID);
-                VPR.prevSlide(idx).replaceWith(prevSlide);
-            });
-        }
+        VPR.loadSlide(prev);
     }
-};
 
-VPR.getNextSlide = function() {
-    var idx = VPR.activeIndex;
-    if (idx + 2 < slider.getSlideCount()) {
-        var onDeckID = VPR.submissions[idx + 2];
-        if (!VPR.onDeck(idx).find('h2').length) {
-            $.get('/' + onDeckID, function(data) {
-                var onDeckSlide = $(data).find('#' + onDeckID);
-                VPR.onDeck(idx).replaceWith(onDeckSlide);
-            });
-        }
+    if (idx + 2 < VPR.submissions.length) {
+        VPR.loadSlide(next);
     }
 };
 
 $(document).ready(function () {
-    VPR.getNextSlide();
-    VPR.getPrevSlide();
+    VPR.getAdjacentSlides();
 });
