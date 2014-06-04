@@ -54,7 +54,7 @@ VPR.prevSlide = function(idx) {
 
 VPR.getPrevSlide = function() {
     var idx = VPR.activeIndex;
-    if (idx > 1) {
+    if (idx >= 1) {
         var prevSlideID = VPR.submissions[idx - 1];
         if (!VPR.prevSlide(idx).find('h2').length) {
             // this own't work for index
