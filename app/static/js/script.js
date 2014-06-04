@@ -68,7 +68,7 @@ VPR.getPrevSlide = function() {
 
 VPR.getNextSlide = function() {
     var idx = VPR.activeIndex;
-    if (idx + 2 < VPR.submissions.length) {
+    if (idx + 2 < slider.getSlideCount()) {
         var onDeckID = VPR.submissions[idx + 2];
         if (!VPR.onDeck(idx).find('h2').length) {
             $.get('/' + onDeckID, function(data) {
