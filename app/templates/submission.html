@@ -76,17 +76,3 @@
 </div>
 {% endblock %}
 
-{% block js %}
-<script type="text/javascript">
-
-var VPR = VPR || {};
-
-VPR.activeSlide = '{{ submission.slug }}';
-
-VPR.submissions = [
-    {% for slug in slugs %}
-    '{{ slug }}',
-    {% endfor %}
-];
-</script>
-{% endblock %}

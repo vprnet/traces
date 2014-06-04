@@ -48,8 +48,19 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 {% endblock %}
 
-{% block js %}{% endblock %}
 {% block scripts %}
+<script type="text/javascript">
+
+var VPR = VPR || {};
+
+VPR.activeSlide = '{{ submission.slug }}';
+
+VPR.submissions = [
+    {% for slug in slugs %}
+    '{{ slug }}',
+    {% endfor %}
+];
+</script>
 <script src="{{ url_for('static', filename='js/build/script.js') }}"></script>
 {% endblock %}
 
