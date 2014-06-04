@@ -1,31 +1,32 @@
-var VPR = VPR || {};
+var VPR = VPR || {},
+    slider = $('.bxslider'),
+    next = $('#slider_next'),
+    prev = $('#slider_prev');
 
 VPR.activeIndex = typeof VPR.submissions !== 'undefined' ? VPR.submissions.indexOf(VPR.activeSlide) : null;
 
-var slider = $('.bxslider').bxSlider({
+slider.bxSlider({
     infiniteLoop: false,
     controls: false,
     startSlide: VPR.activeIndex
 });
 
-$('#slider_next').click(function(event) {
+next.click(function(event) {
     event.preventDefault();
+
     if ( VPR.activeIndex < slider.getSlideCount() - 1 ) {
         VPR.activeIndex++;
         History.pushState(null, null, VPR.submissions[VPR.activeIndex]);
     }
-
-    return false;
 });
 
-$('#slider_prev').click(function(event) {
+prev.click(function(event) {
     event.preventDefault();
+
     if ( VPR.activeIndex > 0 ) {
         VPR.activeIndex--;
         History.pushState(null, null, VPR.submissions[VPR.activeIndex]);
     }
-
-    return false;
 });
 
 History.Adapter.bind(window, 'statechange', function () {
@@ -33,8 +34,6 @@ History.Adapter.bind(window, 'statechange', function () {
     VPR.getNextSlide();
     VPR.getPrevSlide();
 });
-
-VPR.slide = $('#' + VPR.activeSlide);
 
 VPR.onDeck = function(idx) {
     if (typeof VPR.submissions[idx + 2] !== undefined) {
@@ -78,7 +77,6 @@ VPR.getNextSlide = function() {
         }
     }
 };
-
 
 $(document).ready(function () {
     VPR.getNextSlide();
