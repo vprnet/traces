@@ -15,8 +15,7 @@ next.click(function(event) {
     event.preventDefault();
 
     if ( VPR.activeIndex < slider.getSlideCount() - 1 ) {
-        VPR.activeIndex++;
-        History.pushState(null, null, VPR.submissions[VPR.activeIndex]);
+        History.pushState({slide: VPR.activeIndex + 1}, null, VPR.submissions[VPR.activeIndex + 1]);
     }
 });
 
@@ -24,12 +23,15 @@ prev.click(function(event) {
     event.preventDefault();
 
     if ( VPR.activeIndex > 0 ) {
-        VPR.activeIndex--;
-        History.pushState(null, null, VPR.submissions[VPR.activeIndex]);
+        History.pushState({slide: VPR.activeIndex - 1}, null, VPR.submissions[VPR.activeIndex - 1]);
     }
 });
 
 History.Adapter.bind(window, 'statechange', function () {
+    var state = History.getState();
+
+    VPR.activeIndex = state.data.slide;
+
     slider.goToSlide(VPR.activeIndex);
     VPR.getNextSlide();
     VPR.getPrevSlide();
