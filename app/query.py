@@ -68,14 +68,18 @@ def get_submission(title):
     all_submissions = get_google_sheet()
     matched = False
     next_trace = False
-    for submission in all_submissions:
-        name = slugify(unicode(submission['title']))
-        if matched and not next_trace:
-            next_trace = submission
-            next_trace['slug'] = name
-        if title == name:
-            matched = submission
-            matched['slug'] = title
+    if title:  # if a slide
+        for submission in all_submissions:
+            name = slugify(unicode(submission['title']))
+            if matched and not next_trace:
+                next_trace = submission
+                next_trace['slug'] = name
+            if title == name:
+                matched = submission
+                matched['slug'] = title
+    else:  # if landing or share page
+        next_trace = all_submissions[0]
+        next_trace['slug'] = slugify(unicode(next_trace['title']))
 
     return matched, next_trace
 

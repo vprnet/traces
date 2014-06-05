@@ -14,17 +14,22 @@ slider.bxSlider({
 
 next.click(function(event) {
     event.preventDefault();
+    // Landing page served from root, it's submission[i] == ''
+    var newState = VPR.submissions[VPR.activeIndex + 1];
+    if (newState === 'landing') { newState = '/'; }
 
     if ( VPR.activeIndex < slider.getSlideCount() - 1 ) {
-        History.pushState({slide: VPR.activeIndex + 1}, null, VPR.submissions[VPR.activeIndex + 1]);
+        History.pushState({slide: VPR.activeIndex + 1}, null, newState);
     }
 });
 
 prev.click(function(event) {
     event.preventDefault();
+    var newState = VPR.submissions[VPR.activeIndex - 1];
+    if (newState === 'landing') { newState = '/'; }
 
     if ( VPR.activeIndex > 0 ) {
-        History.pushState({slide: VPR.activeIndex - 1}, null, VPR.submissions[VPR.activeIndex - 1]);
+        History.pushState({slide: VPR.activeIndex - 1}, null, newState);
     }
 });
 
@@ -38,14 +43,18 @@ History.Adapter.bind(window, 'statechange', function () {
 });
 
 VPR.loadSlide = function (idx) {
-    var slideID = VPR.submissions[idx];
+    var slideID = VPR.submissions[idx],
+        slideURL = slideID;
+
+    if (slideID === 'landing') { slideURL = ''; }
 
     // If the slide does not have any content
     if (!$('#' + slideID).children().length) {
         // Load the page of the slide with AJAX
-        $.get('/' + slideID, function(data) {
+        $.get('/' + slideURL, function(data) {
             // grab the slide from the returned page content
             var slide = $(data).find('#' + slideID);
+            console.log(slide);
             // replace the slide container with the actual slide content
             $('#' + slideID).replaceWith(slide);
         });
