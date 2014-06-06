@@ -5,6 +5,7 @@ import sys
 from flask_frozen import Freezer
 from upload_s3 import set_metadata
 from config import AWS_DIRECTORY
+from query import get_slugs
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -29,9 +30,17 @@ class WebFactionMiddleware(object):
 
 app.wsgi_app = WebFactionMiddleware(app.wsgi_app)
 
+freezer = Freezer(app)
+
+
+@freezer.register_generator
+def post():
+    slugs, links = get_slugs(title=False)
+    for i in slugs:
+        yield {'title': i}
+
 if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] == 'build':
-        freezer = Freezer(app)
         freezer.freeze()
         set_metadata()
     else:

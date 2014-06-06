@@ -2,7 +2,6 @@
   "name": "vpr-traces",
   "version": "0.0.1",
   "dependencies": {
-    "jquery": "~1.10.2",
     "bootstrap": "~3.1.1",
     "history.js": "~1.8.0",
     "bxslider-4-kallisto": "~4.1.2",

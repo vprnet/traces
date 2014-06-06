@@ -4,7 +4,6 @@ import os
 import hashlib
 import gzip
 import time
-import datetime
 from sys import argv
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
@@ -40,8 +39,8 @@ def directory_list(argv, directory=PUSH_FROM):
     """Creates a list of all non-excluded files in current directory
     and below"""
 
-    if argv > 1:
-        IGNORE_DIRS = IGNORE_DIRECTORIES + argv[1:]
+    if argv > 2:
+        IGNORE_DIRS = IGNORE_DIRECTORIES + argv[2:]
 
     file_list = []
     for root, dirs, files in os.walk(directory):
@@ -128,6 +127,3 @@ def set_metadata():
         k.set_metadata('ETag', etag_hash)
         k.set_contents_from_filename(f)
         k.make_public()
-
-    print '\nPage successfully updated'
-    print "On " + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')

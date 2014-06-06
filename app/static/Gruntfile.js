@@ -18,7 +18,7 @@ module.exports = function (grunt) {
                     'js/libs/modernizr/modernizr-custom.js',
                     'js/libs/bxslider-4-kallisto/jquery.bxslider.js',
                     'js/libs/history.js/scripts/bundled-uncompressed/html4+html5/jquery.history.js',
-                    'js/script.js'
+                    'js/dev/script.js'
                 ],
                 dest: 'js/build/script.js'
             }
@@ -61,7 +61,7 @@ module.exports = function (grunt) {
                 "parseFiles" : true,
 
                  "files" : {
-                     "src": ['js/script.js']
+                     "src": ['js/dev/script.js']
                  }
             }
 
@@ -84,7 +84,7 @@ module.exports = function (grunt) {
         },
         watch: {
             scripts: {
-                files: ['js/script.js'],
+                files: ['js/dev/script.js'],
                 tasks: ['modernizr', 'concat', 'uglify'],
                 options: {
                     spawn: false,

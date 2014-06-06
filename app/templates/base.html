@@ -24,6 +24,9 @@
 
 {% include "_social.html" %}
 {% block underwriter %}{% include "_underwriter_script.html" %}{% endblock %}
+{% block jquery %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+{% endblock %}
 {% include "_analytics.html" %}
 
 </head>
@@ -42,10 +45,6 @@
         <p><span class="hidden-xs" id="vpr_address">Vermont Public Radio // 365 Troy Avenue // Colchester, VT 05446 // (802) 655-9451</span> <span id="copyright">&copy; Vermont Public Radio 2014</span></p>
     </div>
 </footer>
-{% endblock %}
-
-{% block jquery %}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 {% endblock %}
 
 {% block scripts %}

@@ -17,6 +17,7 @@ next.click(function(event) {
     // Landing page served from root, it's submission[i] == ''
     var newState = VPR.submissions[VPR.activeIndex + 1];
     if (newState === 'landing') { newState = '/'; }
+    //if (newState === 'landing') { newState = '/apps/sandbox/'; }
 
     if ( VPR.activeIndex < slider.getSlideCount() - 1 ) {
         History.pushState({slide: VPR.activeIndex + 1}, null, newState);
@@ -27,6 +28,7 @@ prev.click(function(event) {
     event.preventDefault();
     var newState = VPR.submissions[VPR.activeIndex - 1];
     if (newState === 'landing') { newState = '/'; }
+    //if (newState === 'landing') { newState = '/apps/sandbox/'; }
 
     if ( VPR.activeIndex > 0 ) {
         History.pushState({slide: VPR.activeIndex - 1}, null, newState);
@@ -52,6 +54,7 @@ VPR.loadSlide = function (idx) {
     if (!$('#' + slideID).children().length) {
         // Load the page of the slide with AJAX
         $.get('/' + slideURL, function(data) {
+        //$.get('/apps/sandbox/' + slideURL, function(data) {
             // grab the slide from the returned page content
             var slide = $(data).find('#' + slideID);
             console.log(slide);
