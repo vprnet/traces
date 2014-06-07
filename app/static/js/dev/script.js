@@ -9,6 +9,7 @@ slider.bxSlider({
     infiniteLoop: false,
     controls: false,
     adaptiveHeight: true,
+    adaptiveHeightSpeed: 1,
     startSlide: VPR.activeIndex
 });
 
@@ -102,6 +103,7 @@ VPR.loadSlide = function (idx) {
                 infiniteLoop: false,
                 controls: false,
                 adaptiveHeight: true,
+                adaptiveHeightSpeed: 1,
                 startSlide: VPR.activeIndex
             });
         });
