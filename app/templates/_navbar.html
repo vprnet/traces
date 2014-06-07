@@ -3,7 +3,7 @@
         <div class="navbar-header">
             <a id="link-home" class="navbar-brand" href="http://www.vpr.net">
                 <div id="vpr-logo"></div></a>
-            <h1 id="navbar_title"><a href="{{ url_for('index') }}">TRACES: <span id="sub_h1">What Reminds You?</span></a></h1>
+            <h1 id="navbar_title"><a id="home_link" href="{{ url_for('index') }}">TRACES: <span id="sub_h1">What Reminds You?</span></a></h1>
             {% if social %}
             <div id="social-logos">
                 <a class="share sGoogle" href="https://plus.google.com/share?url={{ page_url|urlencode }}" target="_blank">

@@ -22,13 +22,25 @@ next.click(function(event) {
     if (VPR.activeIndex === 0) {
         prev.fadeIn();
     } else if (VPR.activeIndex === slider.getSlideCount() -2) {
-        next.hide().fadeOut();
+        next.fadeOut();
     }
 
     if ( VPR.activeIndex < slider.getSlideCount() - 1 ) {
         History.pushState({slide: VPR.activeIndex + 1}, null, newState);
     }
 
+});
+
+$('#share_link').click(function(event) {
+    event.preventDefault();
+    prev.fadeOut();
+
+    History.pushState({slide: 0}, null, VPR.submissions[0]);
+});
+
+$('#home_link').click(function(event) {
+    event.preventDefault();
+    History.pushState({slide: 1}, null, VPR.submissions[1]);
 });
 
 prev.click(function(event) {
@@ -38,7 +50,7 @@ prev.click(function(event) {
     //if (newState === 'landing') { newState = '/apps/sandbox/'; }
 
     if (VPR.activeIndex === 1) {
-        prev.hide().fadeOut();
+        prev.fadeOut();
     } else if (VPR.activeIndex === slider.getSlideCount() -1) {
         next.fadeIn();
     }
@@ -54,9 +66,9 @@ History.Adapter.bind(window, 'statechange', function () {
     VPR.activeIndex = state.data.slide;
 
     if (VPR.activeIndex === 1) {
-        $('h1').hide().fadeOut();
+        $('h1').fadeOut(500);
     } else {
-        $('h1').fadeIn(250);
+        $('h1').fadeIn();
     }
 
     slider.goToSlide(VPR.activeIndex);
@@ -99,9 +111,9 @@ VPR.getAdjacentSlides = function() {
 VPR.init = function() {
     VPR.getAdjacentSlides();
     $('body').addClass('loaded');
-    if (VPR.activeIndex !== 1) { $('h1').addClass('loaded'); }
+    if (VPR.activeIndex === 1) { $('h1').hide(); }
     if (VPR.activeIndex === 0) { prev.hide(); }
-    if (VPR.activeIndex === slider.getSlideCount() -1) { next.hide(); }
+    if (VPR.activeIndex === slider.getSlideCount() - 1) { next.hide(); }
 };
 
 $(document).ready(function () {
