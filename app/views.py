@@ -22,7 +22,7 @@ def index():
         'twitter_hashtag': "VT, VtTraces"
     }
 
-    return render_template('landing.html',
+    return render_template('index.html',
         submission=submission,
         next_trace=next_trace,
         slugs=slugs,
@@ -50,7 +50,7 @@ def share():
         'twitter_hashtag': "VT, VtTraces"
     }
 
-    return render_template('share.html',
+    return render_template('index.html',
         submission=submission,
         next_trace=next_trace,
         slugs=slugs,

@@ -1,0 +1,57 @@
+{% for slug in slugs %}
+    {% if slug == submission.slug %}
+        <!--Submission-->
+        <li class="slide">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div id="{{ submission.slug }}" class="submission glass">
+                        <div class="submission_copy">
+                            <p>{{ submission['copy'] }}</p>
+                            <h2>- {{ submission.attribution }}</h2>
+                        </div>
+                        <ul class="list-inline">
+                        {% if submission.image %}
+                            <li>View Trace</li>
+                        {% elif submission.audio %}
+                            <li>Listen To Trace</li>
+                        {% endif %}
+                            <li>Read Full Transcript</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+    {% elif slug == next_trace.slug %}
+        <!--Next Trace-->
+        <li class="slide">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div id="{{ next_trace.slug }}" class="next_trace glass">
+                        <div class="submission_copy">
+                            <p>{{ next_trace['copy'] }}</p>
+                            <h2>- {{ next_trace.attribution }}</h2>
+                        </div>
+                        <ul class="list-inline">
+                        {% if next_trace.image %}
+                            <li>View Trace</li>
+                        {% elif next_trace.audio %}
+                            <li>Listen To Trace</li>
+                        {% endif %}
+                            <li>Read Full Transcript</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+    {% else %}
+        <!-- other -->
+        <li class="slide">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div id="{{ slug }}" class="submission glass">
+                    </div>
+                </div>
+            </div>
+        </li>
+    {% endif %}
+{% endfor %}

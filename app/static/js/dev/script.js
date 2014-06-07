@@ -42,6 +42,10 @@ $('#home_link').click(function(event) {
     event.preventDefault();
     var newState = '/';
     //var newState = '/apps/sandbox/';
+    VPR.loadSlide(1);
+    if (VPR.activeIndex === slider.getSlideCount() - 1) {
+        next.fadeIn();
+    }
 
     History.pushState({slide: 1}, null, newState);
 });

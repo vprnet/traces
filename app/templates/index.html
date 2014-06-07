@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_title }} | VPR{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <ul class="bxslider">
+        {% include "_share_slide.html" %}
+        {% include "_landing_slide.html" %}
+
+        {% include "_slides.html" %}
+    </ul>
+</div>
+
+{% endblock %}

@@ -6,81 +6,18 @@
 <div class="container">
     <ul class="bxslider">
 
-        <li>
+        <li class="slide">
             <div id="share">
             </div>
         </li>
 
-        <li>
+        <li class="slide">
             <div class="row">
                 <div id="landing">
                 </div>
             </div>
         </li>
-
-    {% for slug in slugs %}
-        {% if slug == submission.slug %}
-            <!--Submission-->
-            <li>
-                <div class="row">
-                    <div class="col-sm-10 col-sm-offset-1">
-                        <div id="{{ submission.slug }}" class="submission glass">
-                            {% if submission.image %}
-                                <img class="img-responsive" src="{{ submission.image }}">
-                                <div class="photo_copy">
-                                    <p>{{ submission['copy'] }}</p>
-                                    <h2>-{{ submission.attribution }}</h2>
-                                </div>
-                            {% elif submission.audio %}
-                                <div class="pull_quote">
-                                    <p>{{ submission['copy'] }}</p>
-                                    <h2>{{ submission.attribution }}</h2>
-                                </div>
-                            {% else %}
-                                <div class="pull_quote">
-                                    <p>{{ submission['copy'] }}</p>
-                                    <h2>{{ submission.attribution }}</h2>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </li>
-        {% elif slug == next_trace.slug %}
-            <!--Next Trace-->
-            <li>
-                <div class="row">
-                    <div class="col-sm-10 col-sm-offset-1">
-                        <div id="{{ next_trace.slug }}" class="next_trace glass">
-                            {% if next_trace.image %}
-                                <img class="img-responsive" src="{{ next_trace.image }}">
-                                <div class="photo_copy">
-                                    <p>{{ next_trace['copy'] }}</p>
-                                    <h2>-{{ next_trace.attribution }}</h2>
-                                </div>
-                            {% elif next_trace.audio %}
-                                <div class="pull_quote">
-                                    <p>{{ next_trace['copy'] }}</p>
-                                    <h2>{{ next_trace.attribution }}</h2>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </li>
-        {% else %}
-            <!-- other -->
-            <li>
-                <div class="row">
-                    <div class="col-sm-10 col-sm-offset-1">
-                        <div id="{{ slug }}" class="submission glass">
-                        </div>
-                    </div>
-                </div>
-            </li>
-        {% endif %}
-    {% endfor %}
-
+{% include "_slides.html" %}
     </ul>
 </div>
 {% endblock %}
