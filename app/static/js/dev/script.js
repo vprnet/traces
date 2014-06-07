@@ -97,6 +97,13 @@ VPR.loadSlide = function (idx) {
             var slide = $(data).find('#' + slideID);
             // replace the slide container with the actual slide content
             $('#' + slideID).replaceWith(slide);
+            // reload the slider to recalculate heights
+            slider.reloadSlider({
+                infiniteLoop: false,
+                controls: false,
+                adaptiveHeight: true,
+                startSlide: VPR.activeIndex
+            });
         });
     }
 };
