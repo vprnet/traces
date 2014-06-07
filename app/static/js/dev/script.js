@@ -53,6 +53,12 @@ History.Adapter.bind(window, 'statechange', function () {
 
     VPR.activeIndex = state.data.slide;
 
+    if (VPR.activeIndex === 1) {
+        $('h1').hide().fadeOut();
+    } else {
+        $('h1').fadeIn(250);
+    }
+
     slider.goToSlide(VPR.activeIndex);
     VPR.getAdjacentSlides();
 });
