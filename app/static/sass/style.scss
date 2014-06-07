@@ -11,6 +11,7 @@
 @import "no-svg";
 
 body {
+    opacity: 0;
     font-family: "Raleway";
     font-weight: 300;
     // font-family: "Averia Libre";
@@ -19,6 +20,10 @@ body {
     background-image: url('../img/vpr-collage-small.jpg');
     background-attachment: fixed;
     // -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+    opacity: 0;
 }
 
 div.page_container {
@@ -71,7 +76,6 @@ a {
 
 li {
     min-height: 300px;
-    opacity: 0;
 }
 
 .chevrons {

@@ -19,9 +19,16 @@ next.click(function(event) {
     if (newState === 'landing') { newState = '/'; }
     //if (newState === 'landing') { newState = '/apps/sandbox/'; }
 
+    if (VPR.activeIndex === 0) {
+        prev.fadeIn();
+    } else if (VPR.activeIndex === slider.getSlideCount() -2) {
+        next.hide().fadeOut();
+    }
+
     if ( VPR.activeIndex < slider.getSlideCount() - 1 ) {
         History.pushState({slide: VPR.activeIndex + 1}, null, newState);
     }
+
 });
 
 prev.click(function(event) {
@@ -29,6 +36,12 @@ prev.click(function(event) {
     var newState = VPR.submissions[VPR.activeIndex - 1];
     if (newState === 'landing') { newState = '/'; }
     //if (newState === 'landing') { newState = '/apps/sandbox/'; }
+
+    if (VPR.activeIndex === 1) {
+        prev.hide().fadeOut();
+    } else if (VPR.activeIndex === slider.getSlideCount() -1) {
+        next.fadeIn();
+    }
 
     if ( VPR.activeIndex > 0 ) {
         History.pushState({slide: VPR.activeIndex - 1}, null, newState);
@@ -57,7 +70,6 @@ VPR.loadSlide = function (idx) {
         //$.get('/apps/sandbox/' + slideURL, function(data) {
             // grab the slide from the returned page content
             var slide = $(data).find('#' + slideID);
-            console.log(slide);
             // replace the slide container with the actual slide content
             $('#' + slideID).replaceWith(slide);
         });
@@ -78,8 +90,14 @@ VPR.getAdjacentSlides = function() {
     }
 };
 
-$(document).ready(function () {
+VPR.init = function() {
     VPR.getAdjacentSlides();
-    $('li').addClass('loaded');
-    $('.chevron').addClass('loaded');
+    $('body').addClass('loaded');
+    if (VPR.activeIndex !== 1) { $('h1').addClass('loaded'); }
+    if (VPR.activeIndex === 0) { prev.hide(); }
+    if (VPR.activeIndex === slider.getSlideCount() -1) { next.hide(); }
+};
+
+$(document).ready(function () {
+    VPR.init();
 });
