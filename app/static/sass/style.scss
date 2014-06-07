@@ -21,6 +21,10 @@ body {
     // -webkit-font-smoothing: antialiased;
 }
 
+div.page_container {
+    position: relative;
+}
+
 img.bg {
     min-height: 100%;
     min-width: 1500px;
@@ -65,15 +69,33 @@ a {
     font-weight: 300;
 }
 
-.glass {
-    width: 100%;
-    padding: 20px;
-    background: rgba(20,20,20,0.5);
-    @include border-radius(5px);
-    border: 2px solid rgba(20,20,20,0.6);
-    min-height: 300px;
-}
-
 li {
     min-height: 300px;
+    opacity: 0;
 }
+
+.chevrons {
+    .next,
+    .prev {
+        display: block;
+        padding: 0 20px;
+        position: absolute;
+        top: 50%;
+        margin-top: -46px;
+        z-index: 1;
+        color: white;
+        font-size: 92px;
+    }
+    .next {
+        right: 0;
+    }
+    .prev {
+        left: 0;
+    }
+}
+
+.loaded {
+    @include transition(all 0.5s);
+    opacity: 1;
+}
+

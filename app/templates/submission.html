@@ -4,16 +4,6 @@
 
 {% block content %}
 <div class="container">
-    <div class="chevrons">
-        <a id="slider_prev" class="prev" href={% if links.prev %}"{{ url_for('post', title=links.prev) }}"
-            {% else %}"{{ url_for('index') }}"{% endif %}>
-            <i class="icon ion-ios7-arrow-left"></i>
-        </a>
-        <a id="slider_next" class="next" href="{{ url_for('post', title=links.next) }}">
-            <i class="icon ion-ios7-arrow-right"></i>
-        </a>
-    </div>
-
     <ul class="bxslider">
 
         <li>

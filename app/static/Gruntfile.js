@@ -10,10 +10,42 @@ module.exports = function (grunt) {
                 }
             }
         },
+        parallel: {
+            mix: {
+                tasks: [{
+                grunt: true,
+                args: ['fast']
+                }, {
+                grunt: true,
+                args: ['block']
+                }, {
+                cmd: 'pwd'
+                },{
+                grunt: true,
+                args: ['fast']
+            }]
+            },
+            shell: {
+                tasks: [{
+                cmd: 'whoami'
+                }]
+            },
+            grunt: {
+                options: {
+                grunt: true
+                },
+                tasks: ['fast', 'block', 'fast']
+            },
+            stream: {
+                options: {
+                stream: true
+                },
+                tasks: [ { cmd: 'tail', args: ['-f', '/var/log/system.log'] }]
+            }
+        },
         concat: {
             dist: {
                 src: [
-                    'js/libs/jquery/jquery.js',
                     'js/libs/bootstrap/dist/js/bootstrap.js',
                     'js/libs/modernizr/modernizr-custom.js',
                     'js/libs/bxslider-4-kallisto/jquery.bxslider.js',
@@ -119,6 +151,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-modernizr');
+    grunt.loadNpmTasks('grunt-parallel');
 
     // What tasks should be run when "grunt" is entered in the command line
     grunt.registerTask('default', ['browserSync', 'watch']);

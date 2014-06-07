@@ -80,4 +80,6 @@ VPR.getAdjacentSlides = function() {
 
 $(document).ready(function () {
     VPR.getAdjacentSlides();
+    $('li').addClass('loaded');
+    $('.chevron').addClass('loaded');
 });
