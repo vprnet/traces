@@ -40,7 +40,10 @@ $('#share_link').click(function(event) {
 
 $('#home_link').click(function(event) {
     event.preventDefault();
-    History.pushState({slide: 1}, null, VPR.submissions[1]);
+    var newState = '/';
+    //var newState = '/apps/sandbox/';
+
+    History.pushState({slide: 1}, null, newState);
 });
 
 prev.click(function(event) {
