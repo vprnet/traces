@@ -1,3 +1,5 @@
+$highlight: #ecfaa7;
+
 @import 'compass/css3';
 @import "bootstrap";
 @import "mixin";
@@ -9,6 +11,7 @@
 @import "submission";
 @import "bxslider";
 @import "no-svg";
+
 
 body {
     opacity: 0;

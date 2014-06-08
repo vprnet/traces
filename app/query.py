@@ -4,6 +4,7 @@ import ImageOps
 import urllib
 import os
 import re
+import markdown
 from unicodedata import normalize
 from cStringIO import StringIO
 from google_spreadsheet.api import SpreadsheetAPI
@@ -71,6 +72,10 @@ def get_submission(title):
     if title:  # if a slide
         for submission in all_submissions:
             name = slugify(unicode(submission['title']))
+            submission['paragraphs'] = []
+            paragraphs = submission['transcript'].split('//')
+            for par in paragraphs:
+                submission['paragraphs'].append(markdown.markdown(par))
             if matched and not next_trace:
                 next_trace = submission
                 next_trace['slug'] = name

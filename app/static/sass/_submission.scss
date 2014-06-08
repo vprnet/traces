@@ -1,6 +1,25 @@
 .slide {
-    img {
-        margin: 0 auto 15px;
+    position: relative;
+    img.submission_img {
+        max-width: 40%;
+        padding: 5px 30px 20px 0;
+    }
+    div.audio_box {
+        min-width: 40%;
+        padding: 15px;
+        padding-bottom: 40px;
+        margin: 0 25px 15px 0;
+        border: 2px solid $white;
+        border-radius: 5px;
+        h3, p {
+            text-align: center;
+        }
+        h3 {
+            font-size: 72px;
+        }
+        p {
+
+        }
     }
     .photo_copy {
         p {
@@ -12,7 +31,11 @@
     }
     div.submission_copy {
         p {
-            font-size: 48px;
+            font-size: 24px;
+            strong {
+                color: $highlight;
+                font-weight: 900;
+            }
         }
     }
     h2 {
