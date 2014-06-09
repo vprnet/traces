@@ -13,25 +13,6 @@ slider.bxSlider({
     startSlide: VPR.activeIndex
 });
 
-next.click(function(event) {
-    event.preventDefault();
-    // Landing page served from root, it's submission[i] == ''
-    var newState = VPR.submissions[VPR.activeIndex + 1];
-    if (newState === 'landing') { newState = '/'; }
-    //if (newState === 'landing') { newState = '/apps/sandbox/'; }
-
-    if (VPR.activeIndex === 0) {
-        prev.fadeIn();
-    } else if (VPR.activeIndex === slider.getSlideCount() -2) {
-        next.fadeOut();
-    }
-
-    if ( VPR.activeIndex < slider.getSlideCount() - 1 ) {
-        History.pushState({slide: VPR.activeIndex + 1}, null, newState);
-    }
-
-});
-
 $('#share_link').click(function(event) {
     event.preventDefault();
     prev.fadeOut();
@@ -49,6 +30,25 @@ $('#home_link').click(function(event) {
     }
 
     History.pushState({slide: 1}, null, newState);
+});
+
+next.click(function(event) {
+    event.preventDefault();
+    // Landing page served from root, it's submission[i] == ''
+    var newState = VPR.submissions[VPR.activeIndex + 1];
+    if (newState === 'landing') { newState = '/'; }
+    //if (newState === 'landing') { newState = '/apps/sandbox/'; }
+
+    if (VPR.activeIndex === 0) {
+        prev.fadeIn();
+    } else if (VPR.activeIndex === slider.getSlideCount() -2) {
+        next.fadeOut();
+    }
+
+    if ( VPR.activeIndex < slider.getSlideCount() - 1 ) {
+        History.pushState({slide: VPR.activeIndex + 1}, null, newState);
+    }
+
 });
 
 prev.click(function(event) {

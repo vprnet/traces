@@ -12,7 +12,10 @@
 
                             {% elif submission['audio'] %}
                             <div class="audio_box pull-left">
-                                <h3><i class="icon ion-ios7-play"></i></h3>
+                                <div class="play_audio">
+                                    <audio src="{{ submission.audio }}" type="audio/mpeg" preload="auto"></audio>
+                                    <h3><i class="icon ion-ios7-play"></i></h3>
+                                </div>
                                 <p class="tell_story">Hear {{ submission.firstname }} <br /> Tell {{ submission.gender|title }} Story</p>
                             </div>
                             {% endif %}
