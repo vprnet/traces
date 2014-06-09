@@ -2,23 +2,31 @@
     position: relative;
     img.submission_img {
         max-width: 40%;
-        padding: 5px 30px 20px 0;
+        padding: 5px 30px 20px 20px;
+    }
+    img.landscape {
+        max-width: 100%;
+        position: relative;
+        padding: 0;
+        margin: 0 auto;
     }
     div.audio_box {
         min-width: 40%;
-        padding: 15px;
-        padding-bottom: 40px;
-        margin: 0 25px 15px 0;
+        padding: 20px;
+        background: $white;
+        opacity: 0.5;
+        margin: 5px 25px 5px 20px;
         border: 2px solid $white;
-        border-radius: 5px;
+        border-radius: 2px;
         h3, p {
             text-align: center;
+            color: black;
         }
         h3 {
             font-size: 72px;
         }
         p {
-
+            font-weight: 500;
         }
     }
     .photo_copy {
@@ -30,7 +38,10 @@
         }
     }
     div.submission_copy {
+        max-width: 700px;
+        margin: 40px auto;
         p {
+            padding: 0 20px;
             font-size: 24px;
             strong {
                 color: $highlight;
@@ -48,7 +59,9 @@
     width: 100%;
     padding: 20px;
     background: rgba(20,20,20,0.5);
-    @include border-radius(5px);
-    border: 2px solid rgba(20,20,20,0.6);
-    min-height: 300px;
+    @include border-radius(2px);
+    border-right: 2px solid rgba(20,20,20,0.3);
+    border-bottom: 2px solid rgba(20,20,20,0.6);
+    border-top: 1px solid rgba(100,100,100,0.2);
+    border-left: 2px solid rgba(100,100,100,0.2);
 }

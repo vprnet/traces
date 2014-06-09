@@ -8,12 +8,12 @@
 
                         <div class="submission_copy">
                             {% if submission['image'] %}
-                                <img class="submission_img img-responsive pull-left" src="{{ submission['image'] }}">
+                                <img class="submission_img img-responsive {% if submission.landscape %}landscape{% else %}pull-left{% endif %}" src="{{ submission['image'] }}">
 
                             {% elif submission['audio'] %}
                             <div class="audio_box pull-left">
                                 <h3><i class="icon ion-ios7-play"></i></h3>
-                                <p class="tell_story">Hear {{ submission.firstname }} tell {{ submission.gender }} story</p>
+                                <p class="tell_story">Hear {{ submission.firstname }} <br /> Tell {{ submission.gender|title }} Story</p>
                             </div>
                             {% endif %}
 
@@ -36,12 +36,12 @@
 
                         <div class="submission_copy">
                             {% if next_trace.image %}
-                                <img class="submission_img img-responsive pull-left" src="{{ next_trace.image }}">
+                                <img class="submission_img img-responsive {% if next_trace.landscape %}landscape{% else %}pull-left{% endif %}" src="{{ next_trace['image'] }}">
 
                             {% elif next_trace.audio %}
                             <div class="audio_box pull-left">
                                 <h3><i class="icon ion-ios7-play"></i></h3>
-                                <p class="tell_story">Hear {{ next_trace.firstname }} tell {{ next_trace.gender }} story</p>
+                                <p class="tell_story">Hear {{ next_trace.firstname }}<br />Tell {{ next_trace.gender|title }} Story</p>
                             </div>
                             {% endif %}
                             {% for paragraph in next_trace['paragraphs'] %}

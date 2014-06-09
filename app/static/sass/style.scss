@@ -83,7 +83,7 @@ li.slide {
     .prev {
         display: block;
         padding: 0 20px;
-        position: absolute;
+        position: fixed;
         top: 50%;
         margin-top: -46px;
         z-index: 1;
