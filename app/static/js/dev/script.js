@@ -10,6 +10,7 @@ slider.bxSlider({
     controls: false,
     adaptiveHeight: true,
     adaptiveHeightSpeed: 1,
+    touchEnabled: true,
     startSlide: VPR.activeIndex
 });
 

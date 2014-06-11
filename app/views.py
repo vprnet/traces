@@ -22,9 +22,24 @@ def index():
         'twitter_hashtag': "VT, VtTraces"
     }
 
+    if next_trace['image']:
+        next_img = next_trace['image']
+    else:
+        next_img = 'http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg'
+
+    next_social = {
+        'title': "Traces:" + next_trace['title'],
+        'subtitle': "What Reminds You",
+        'img': next_img,
+        'description': next_trace['copy'],
+        'twitter_text': "",
+        'twitter_hashtag': "VtTraces"
+    }
+
     return render_template('index.html',
         submission=submission,
         next_trace=next_trace,
+        next_social=next_social,
         slugs=slugs,
         links=links,
         page_title=page_title,
@@ -50,9 +65,24 @@ def share():
         'twitter_hashtag': "VT, VtTraces"
     }
 
+    if next_trace['image']:
+        next_img = next_trace['image']
+    else:
+        next_img = 'http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg'
+
+    next_social = {
+        'title': "Traces:" + next_trace['title'],
+        'subtitle': "What Reminds You",
+        'img': next_img,
+        'description': next_trace['copy'],
+        'twitter_text': "",
+        'twitter_hashtag': "VtTraces"
+    }
+
     return render_template('index.html',
         submission=submission,
         next_trace=next_trace,
+        next_social=next_social,
         slugs=slugs,
         links=links,
         page_title=page_title,
@@ -63,24 +93,46 @@ def share():
 
 @app.route('/<title>')
 def post(title):
-    page_url = BASE_URL + request.path
+    page_url = BASE_URL
     navbar_h1 = True
     page_title = 'TRACES: What Reminds You?'
     submission, next_trace = get_submission(title)
     slugs, links = get_slugs(title)
 
-    social = {
-        'title': "",
-        'subtitle': "",
-        'img': "",
-        'description': "",
+    if submission['image']:
+        this_img = submission['image']
+    else:
+        this_img = 'http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg'
+
+    this_social = {
+        'title': "Traces:" + submission['title'],
+        'subtitle': "What Reminds You",
+        'img': this_img,
+        'description': submission['copy'],
         'twitter_text': "",
-        'twitter_hashtag': ""
+        'twitter_hashtag': "VtTraces"
     }
+
+    if next_trace:
+        if next_trace['image']:
+            next_img = next_trace['image']
+        else:
+            next_img = 'http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg'
+        next_social = {
+            'title': "Traces:" + next_trace['title'],
+            'subtitle': "What Reminds You",
+            'img': next_img,
+            'description': next_trace['copy'],
+            'twitter_text': "",
+            'twitter_hashtag': "VtTraces"
+        }
+    else:
+        next_social = False
 
     return render_template('submission.html',
         page_title=page_title,
-        social=social,
+        this_social=this_social,
+        next_social=next_social,
         navbar_h1=navbar_h1,
         submission=submission,
         slugs=slugs,

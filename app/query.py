@@ -84,6 +84,10 @@ def get_submission(title):
                 matched['slug'] = title
     else:  # if landing or share page
         next_trace = all_submissions[0]
+        next_trace['paragraphs'] = []
+        paragraphs = next_trace['transcript'].split('//')
+        for par in paragraphs:
+            next_trace['paragraphs'].append(markdown.markdown(par))
         next_trace['slug'] = slugify(unicode(next_trace['title']))
 
     return matched, next_trace

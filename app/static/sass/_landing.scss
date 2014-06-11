@@ -3,27 +3,19 @@
 }
 
 #landing {
-    height: 80%;
-    .glass {
-        padding: 40px !important;
-        height: 100%;
-    }
+    padding-bottom: 150px;
     h2, h3, #share_pill {
         text-align: center;
     }
     h2 {
         margin-bottom: 0;
-        margin-top: 1em;
         font-size: 124px;
         @media (max-width: $laptop) {
-            margin-top: 0.7em;
         }
         @media (max-width: $tablet) {
             font-size: 68px;
-            margin-top: .5em;
         }
         @media (max-width: $phone) {
-            margin-top: 0px;
             font-size: 54px;
         }
         font-weight: 100;
@@ -61,18 +53,6 @@
             @media (max-width: $phone) {
                 padding: 0 10px;
             }
-        }
-    }
-    .pill {
-        font-size: 2em;
-        @media (max-width: $tablet) {
-            font-size: 1.5em;
-        }
-        @include transition(all 0.25s);
-        &:hover {
-            color: #000;
-            background-color: #fff;
-            border-color: #fff;
         }
     }
 }
