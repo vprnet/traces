@@ -5,22 +5,19 @@
 {% block title %}Traces: {{ submission.title }} | VPR{% endblock %}
 
 {% block content %}
-<div class="container">
-    <ul class="bxslider">
+<ul class="bxslider">
 
-        <li class="slide">
-            <div id="share">
-            </div>
-        </li>
+    <li class="slide">
+        <div id="share">
+        </div>
+    </li>
 
-        <li class="slide">
-            <div class="row">
-                <div id="landing">
-                </div>
+    <li class="slide">
+        <div class="row">
+            <div id="landing">
             </div>
-        </li>
-{% include "_slides.html" %}
-    </ul>
-</div>
+        </div>
+    </li>
+    {% include "_slides.html" %}
+</ul>
 {% endblock %}
-

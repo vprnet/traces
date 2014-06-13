@@ -3,6 +3,15 @@ from flask import render_template, request
 from config import BASE_URL
 from query import get_submission, get_slugs
 
+social = {
+    'title': "Traces: Share Your Story",
+    'subtitle': "",
+    'img': "http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg",
+    'description': "When you've lost - or lost touch with - a relative or friend because of drug addiction, reminders of that person can be anywhere. Help VPR build a collection of those reminders and the memories they evoke.",
+    'twitter_text': "Have you lost - or lost touch with - someone because of drug addiction? Share your story:",
+    'twitter_hashtag': "VT, VtTraces"
+}
+
 
 @app.route('/')
 def index():
@@ -12,15 +21,6 @@ def index():
     x, next_trace = get_submission(title=False)
     slugs, links = get_slugs(title=False)
     submission = {'slug': 'landing'}
-
-    social = {
-        'title': "Traces: Share Your Story",
-        'subtitle': "",
-        'img': "http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg",
-        'description': "When you've lost - or lost touch with - a relative or friend because of drug addiction, reminders of that person can be anywhere. Help VPR build a collection of those reminders and the memories they evoke.",
-        'twitter_text': "Have you lost - or lost touch with - someone because of drug addiction? Share your story:",
-        'twitter_hashtag': "VT, VtTraces"
-    }
 
     if next_trace['image']:
         next_img = next_trace['image']

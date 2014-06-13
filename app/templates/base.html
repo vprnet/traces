@@ -10,6 +10,7 @@
     <!-- Styles -->
 {% block style %}
     <link href='http://fonts.googleapis.com/css?family=Raleway:600,500,400,300,200,100' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link href="{{ url_for('static', filename='css/style.css') }}?ver=0.3" rel="stylesheet">
 {% endblock %}
 
@@ -41,12 +42,14 @@
         {% else %}"{{ url_for('index') }}"{% endif %}>
         <i class="icon ion-ios7-arrow-left"></i>
     </a>
-    <a id="slider_next" class="next" href="{{ url_for('post', title=links.next) }}">
+    <a id="slider_next" class="next" href="{% if links.next %}{{ url_for('post', title=links.next) }}{% endif %}">
         <i class="icon ion-ios7-arrow-right"></i>
     </a>
 </div>
 {% block content %}{% endblock %}
 </div>
+
+{% include "_modal.html" %}
 
 {% block footer %}
 <footer>
@@ -61,7 +64,7 @@
 
 var VPR = VPR || {};
 
-VPR.activeSlide = '{{ submission.slug }}';
+VPR.startSlide = '{{ submission.slug }}';
 
 VPR.submissions = [
     'share',

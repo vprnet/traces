@@ -9,7 +9,12 @@
 
                             <div class="submission_copy">
                                 {% if submission['image'] %}
-                                    <img class="submission_img img-responsive {% if submission.landscape %}landscape{% else %}pull-left{% endif %}" src="{{ submission['image'] }}">
+                                    <div class="image_block {% if submission.landscape %}landscape{% else %}pull-left{% endif %}">
+                                        <img class="submission_img img-responsive" src="{{ submission['image'] }}">
+                                        {% if not submission.landscape %}
+                                        <p><i data_src="{{ submission.image }}" class="modal_toggle icon ion-arrow-expand"></i></p>
+                                        {% endif %}
+                                    </div>
 
                                 {% elif submission['audio'] %}
                                 <div class="audio_box pull-left">
@@ -63,8 +68,10 @@
 
                             <div class="submission_copy">
                                 {% if next_trace.image %}
-                                    <img class="submission_img img-responsive {% if next_trace.landscape %}landscape{% else %}pull-left{% endif %}" src="{{ next_trace['image'] }}">
-
+                                    <div class="image_block {% if next_trace.landscape %}landscape{% else %}pull-left{% endif %}">
+                                        <img class="submission_img img-responsive" src="{{ next_trace['image'] }}">
+                                        <p><i data_src="{{ next_trace.image }}" class="modal_toggle icon ion-arrow-expand"></i></p>
+                                    </div>
                                 {% elif next_trace.audio %}
                                 <div class="audio_box pull-left">
                                     <h3><i class="icon ion-ios7-play"></i></h3>
@@ -81,7 +88,7 @@
                                 <div class="row share_container">
                                     <div class="col-sm-6">
                                         <hr>
-                                        <p>Share {% if submission.firstname %}{{ submission.firstname }}'s {% else %}their {% endif %}story:</p>
+                                        <p>Share {% if next_trace.firstname %}{{ next_trace.firstname }}'s {% else %}their {% endif %}story:</p>
                                         <div class="row social_pills">
                                             <div class="col-xs-6">
                                                 <p><a class="pill" href="https://www.facebook.com/dialog/feed?app_id=282283015178&picture={{ next_social.img|urlencode }}&name={{ next_social.title|urlencode }}&caption={{ next_social.subtitle|urlencode }}&description={{ next_social.description|urlencode }}&redirect_uri={{ page_url|urlencode }}/{{ next_trace.slug }}" target="_blank"><i class="icon ion-social-facebook"></i></a></p>

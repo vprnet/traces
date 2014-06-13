@@ -3,7 +3,7 @@ var VPR = VPR || {},
     next = $('#slider_next'),
     prev = $('#slider_prev');
 
-VPR.activeIndex = typeof VPR.submissions !== 'undefined' ? VPR.submissions.indexOf(VPR.activeSlide) : null;
+VPR.activeIndex = typeof VPR.submissions !== 'undefined' ? VPR.submissions.indexOf(VPR.startSlide) : null;
 
 slider.bxSlider({
     infiniteLoop: false,
@@ -69,10 +69,32 @@ prev.click(function(event) {
     }
 });
 
+
+VPR.updateModal = function() {
+    console.log('click');
+
+    var modalImg = $('#tracesModal img'),
+        imageSrc = $(this).attr('data_src');
+
+    // if no image on active slide
+    if (!modalImg.length) {
+        console.log("no image in modal");
+        var newImage = $('<img>').attr('src', imageSrc);
+        $('#tracesModal .modal-content').append(newImage);
+    // else, update image src
+    } else {
+        console.log("image already in modal");
+        modalImg.attr('src', imageSrc);
+    }
+    $('#tracesModal').modal();
+};
+
+$('i.modal_toggle').click(VPR.updateModal);
+
 History.Adapter.bind(window, 'statechange', function () {
     var state = History.getState();
-
     VPR.activeIndex = state.data.slide;
+
 
     if (VPR.activeIndex === 1) {
         $('h1').fadeOut(500);
@@ -107,6 +129,7 @@ VPR.loadSlide = function (idx) {
                 adaptiveHeightSpeed: 1,
                 startSlide: VPR.activeIndex
             });
+            $('i.modal_toggle').click(VPR.updateModal);
         });
     }
 };
