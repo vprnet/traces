@@ -24,8 +24,8 @@ VPR.slideToShare = function(event) {
 
 $('#home_link').click(function(event) {
     event.preventDefault();
-    var newState = '/';
-    //var newState = '/apps/sandbox/';
+    //var newState = '/';
+    var newState = '/apps/sandbox/';
     VPR.loadSlide(1);
     if (VPR.activeIndex === slider.getSlideCount() - 1) {
         next.fadeIn();
@@ -38,8 +38,8 @@ next.click(function(event) {
     event.preventDefault();
     // Landing page served from root, it's submission[i] == ''
     var newState = VPR.submissions[VPR.activeIndex + 1];
-    if (newState === 'landing') { newState = '/'; }
-    //if (newState === 'landing') { newState = '/apps/sandbox/'; }
+    //if (newState === 'landing') { newState = '/'; }
+    if (newState === 'landing') { newState = '/apps/sandbox/'; }
 
     if (VPR.activeIndex === 0) {
         prev.fadeIn();
@@ -56,8 +56,8 @@ next.click(function(event) {
 prev.click(function(event) {
     event.preventDefault();
     var newState = VPR.submissions[VPR.activeIndex - 1];
-    if (newState === 'landing') { newState = '/'; }
-    //if (newState === 'landing') { newState = '/apps/sandbox/'; }
+    //if (newState === 'landing') { newState = '/'; }
+    if (newState === 'landing') { newState = '/apps/sandbox/'; }
 
     if (VPR.activeIndex === 1) {
         prev.fadeOut();
@@ -115,8 +115,8 @@ VPR.loadSlide = function (idx) {
     // If the slide does not have any content
     if (!$('#' + slideID).children().length) {
         // Load the page of the slide with AJAX
-        $.get('/' + slideURL, function(data) {
-        //$.get('/apps/sandbox/' + slideURL, function(data) {
+        //$.get('/' + slideURL, function(data) {
+        $.get('/apps/sandbox/' + slideURL, function(data) {
             // grab the slide from the returned page content
             var slide = $(data).find('#' + slideID);
             // replace the slide container with the actual slide content
