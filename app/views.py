@@ -129,6 +129,7 @@ def post(title):
         page_title=page_title,
         navbar_h1=navbar_h1,
         submission=submission,
+        social=social,
         slugs=slugs,
         links=links,
         next_trace=next_trace,

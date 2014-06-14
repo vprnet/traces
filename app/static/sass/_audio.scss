@@ -3,18 +3,28 @@ div.audio_box {
     opacity: 0.5;
     border: 2px solid $white;
     @include border-radius(2px);
-    padding: 20px;
+    padding: 10px;
     margin: 5px 25px 10px 0px;
     min-width: 40%;
+    @media (max-width: 700px) {
+        min-width: 100%;
+        margin-bottom: 20px;
+    }
     p {
         text-align: center;
         color: black;
         &.tell_story {
             font-weight: 500;
+            margin-bottom: 10px;
+            br {
+                @media (max-width: 700px) {
+                    display: none;
+                }
+            }
         }
         &.audio_control {
             font-size: 72px;
-            margin-bottom: 0;
+            margin-bottom: 10px;
         }
     }
 }

@@ -12,6 +12,7 @@ $highlight: #ecfaa7;
 @import "submission";
 @import "image";
 @import "audio";
+@import "navigation";
 @import "bxslider";
 @import "no-svg";
 @import "modal";
@@ -62,6 +63,7 @@ p {
 
 a {
     color: $white;
+    @include transition(all, 0.25s);
     &:hover {
         color: $blue;
         text-decoration: none;
@@ -115,25 +117,8 @@ a.dk_pill {
 li.slide {
     min-height: 300px;
     display: block;
-}
-
-.chevrons {
-    .next,
-    .prev {
-        display: block;
-        padding: 0 20px;
-        position: fixed;
-        top: 50%;
-        margin-top: -46px;
-        z-index: 1;
-        color: white;
-        font-size: 92px;
-    }
-    .next {
-        right: 0;
-    }
-    .prev {
-        left: 0;
+    @media (max-width: 850px) {
+        margin-top: 20px;
     }
 }
 
@@ -142,3 +127,8 @@ li.slide {
     opacity: 1;
 }
 
+#sub_h1 {
+    @media (max-width: $phone) {
+        display: none;
+    }
+}

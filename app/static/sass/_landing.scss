@@ -11,6 +11,7 @@
         margin-bottom: 0;
         font-size: 124px;
         @media (max-width: $laptop) {
+            font-size: 88px;
         }
         @media (max-width: $tablet) {
             font-size: 68px;
@@ -53,6 +54,11 @@
             @media (max-width: $phone) {
                 padding: 0 10px;
             }
+        }
+    }
+    .pill {
+        @media (max-width: $laptop) {
+            font-size: 24px;
         }
     }
 }

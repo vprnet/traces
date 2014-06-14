@@ -49,6 +49,7 @@ module.exports = function (grunt) {
                     'js/libs/bootstrap/dist/js/bootstrap.js',
                     'js/libs/modernizr/modernizr-custom.js',
                     'js/libs/bxslider-4-kallisto/jquery.bxslider.js',
+                    'js/libs/jquery.transit/jquery.transit.js',
                     'js/libs/history.js/scripts/bundled-uncompressed/html4+html5/jquery.history.js',
                     'js/dev/audio.js',
                     'js/dev/script.js'

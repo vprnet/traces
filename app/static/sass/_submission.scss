@@ -7,20 +7,35 @@
         padding: 0 20px;
         blockquote {
             font-size: 36px;
+            @media (max-width: $tablet) {
+                font-size: 32px;
+            }
+            @media (max-width: $phone) {
+                font-size: 24px;
+            }
         }
         p {
             font-size: 24px;
+            @media (max-width: $phone) {
+                font-size: 18px;
+            }
             strong {
                 color: $highlight;
                 font-weight: 900;
             }
         }
     }
-    h2 {
-        font-size: 2em;
+    h2.submitter {
+        font-size: 2.5em;
         text-align: right;
         padding-right: 15px;
         margin-bottom: 50px;
+        margin-top: 50px;
+        font-weight: 700;
+        @media (max-width: $phone) {
+            font-size: 1.5em;
+            margin: 20px 0 40px;
+        }
     }
 }
 
@@ -50,6 +65,9 @@
 .glass {
     width: 100%;
     padding: 20px;
+    @media (max-width: $phone) {
+        padding: 0 5px 20px;
+    }
     background: rgba(20,20,20,0.5);
     @include border-radius(2px);
     border-right: 2px solid rgba(20,20,20,0.3);

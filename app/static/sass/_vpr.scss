@@ -70,9 +70,6 @@ html, body {
         a:hover {
             color: lighten($blue, 10%);
         }
-        @media (max-width: $tablet) {
-            display: none;
-        }
     }
 }
 

@@ -1,0 +1,65 @@
+.chevrons {
+    @media (max-width: 850px) {
+        position: relative;
+        opacity: 0.8;
+        margin-top: -20px;
+    }
+    .swiper_prompt {
+        display: none;
+        @media (max-width: 850px) {
+            display: block;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            top: 10px;
+            font-size: 18px;
+            @include transition(all 0.3s);
+            &.swipe_right {
+                @include transform(30px);
+            }
+            &.swipe_left {
+                right: 30px;
+            }
+        }
+    }
+    .next,
+    .prev {
+        display: block;
+        padding: 0 20px;
+        position: fixed;
+        top: 50%;
+        margin-top: -46px;
+        z-index: 1;
+        color: white;
+        font-size: 92px;
+        @media (max-width: 850px) {
+            font-size: 32px;
+            position: absolute;
+            top: 0px;
+            margin-top: 0;
+            padding: 5px 10px;
+            @include border-radius(6px);
+            border: 2px solid #f8f8f8;
+            @include transition(all 0.25s);
+            &:hover {
+                color: $black;
+                background-color: white;
+            }
+        }
+        @media (max-width: $phone) {
+            display: none;
+        }
+    }
+    .next {
+        right: 0;
+        @media (max-width: 850px) {
+            right: 18px;
+        }
+    }
+    .prev {
+        left: 0;
+        @media (max-width: 850px) {
+            left: 12px;
+        }
+    }
+}

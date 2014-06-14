@@ -14,12 +14,13 @@ slider.bxSlider({
     startSlide: VPR.activeIndex
 });
 
-$('#share_link').click(function(event) {
+
+VPR.slideToShare = function(event) {
     event.preventDefault();
     prev.fadeOut();
-
     History.pushState({slide: 0}, null, VPR.submissions[0]);
-});
+};
+
 
 $('#home_link').click(function(event) {
     event.preventDefault();
@@ -135,6 +136,10 @@ VPR.loadSlide = function (idx) {
             var audioDiv = $('#' + slideID + ' div.play_audio');
             audioDiv.click(VPR.playAudio);
             VPR.canPlay(audioDiv);
+
+            if (slideID === 'landing') {
+                $('#share_link').click(VPR.slideToShare);
+            }
         });
     }
 };
@@ -153,6 +158,13 @@ VPR.getAdjacentSlides = function() {
     }
 };
 
+VPR.swipeAction = function() {
+    var swipeText = $('p.swiper_prompt');
+    swipeText.transition({x: 80, delay: 900}, 500)
+        .transition({x: -80}, 500)
+        .transition({x: 0}, 500);
+};
+
 VPR.init = function() {
     VPR.getAdjacentSlides();
     $('body').addClass('loaded');
@@ -163,6 +175,8 @@ VPR.init = function() {
     // register events on page load
     $('div.play_audio').click(VPR.playAudio);
     $('i.modal_toggle').click(VPR.updateModal);
+    $('#share_link').click(VPR.slideToShare);
+    VPR.swipeAction();
     var audioDivs = $('div.play_audio').each( function() {
         VPR.canPlay($(this));
     });

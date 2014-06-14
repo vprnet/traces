@@ -14,8 +14,8 @@
         {{ paragraph.replace(' -- ', '&mdash;')|safe }}
 
     {% endfor %}
+</div>
 
-    <h2>- {% if slide.firstname %}{{ slide.firstname }} {{ slide.lastname }}{% else %}Anonymous{% endif %}</h2>
+    <h2 class="submitter">{% if slide.firstname %}{{ slide.firstname }} {{ slide.lastname }}{% else %}Anonymous{% endif %}</h2>
 
     {% include "_share_container.html" %}
-</div>

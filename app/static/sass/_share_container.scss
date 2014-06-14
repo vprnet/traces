@@ -1,6 +1,7 @@
 div.share_container {
+    margin-bottom: 40px;
     p {
-        font-size: 18px;
+        font-size: 24px;
         text-align: center;
         font-weight: 600;
         margin-bottom: 30px !important;
@@ -12,6 +13,10 @@ div.share_container {
         margin-top: -3px;
         a {
             padding: 0.35em 2.5em 0.35em;
+            @media (max-width: $laptop) and (min-width: $tablet),
+            (max-width: $phone) {
+                padding: 0.35em 1.5em;
+            }
             font-size: 1.2em;
         }
     }
