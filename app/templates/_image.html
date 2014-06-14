@@ -1,0 +1,6 @@
+<div class="image_block {% if slide.landscape %}landscape{% else %}pull-left{% endif %}">
+    <img class="submission_img img-responsive" src="{{ slide.image }}">
+    {% if not slide.landscape %}
+    <p><i data_src="{{ slide.image }}" class="modal_toggle icon ion-arrow-expand"></i></p>
+    {% endif %}
+</div>

@@ -1,0 +1,21 @@
+<div class="submission_copy">
+    {% if slide['image'] %}
+        {% include "_image.html" %}
+    {% elif slide['audio'] %}
+        {% include "_audio.html" %}
+    {% endif %}
+
+    {% for paragraph in slide['paragraphs'] %}
+
+        {% if loop.index == 2 %}
+        <blockquote>{{ slide['copy'] }}</blockquote>
+        {% endif %}
+
+        {{ paragraph.replace(' -- ', '&mdash;')|safe }}
+
+    {% endfor %}
+
+    <h2>- {% if slide.firstname %}{{ slide.firstname }} {{ slide.lastname }}{% else %}Anonymous{% endif %}</h2>
+
+    {% include "_share_container.html" %}
+</div>

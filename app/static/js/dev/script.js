@@ -89,7 +89,6 @@ VPR.updateModal = function() {
     $('#tracesModal').modal();
 };
 
-$('i.modal_toggle').click(VPR.updateModal);
 
 History.Adapter.bind(window, 'statechange', function () {
     var state = History.getState();
@@ -129,7 +128,13 @@ VPR.loadSlide = function (idx) {
                 adaptiveHeightSpeed: 1,
                 startSlide: VPR.activeIndex
             });
+
+            // register events for dynamic content
             $('i.modal_toggle').click(VPR.updateModal);
+
+            var audioDiv = $('#' + slideID + ' div.play_audio');
+            audioDiv.click(VPR.playAudio);
+            VPR.canPlay(audioDiv);
         });
     }
 };
@@ -154,6 +159,13 @@ VPR.init = function() {
     if (VPR.activeIndex === 1) { $('h1').hide(); }
     if (VPR.activeIndex === 0) { prev.hide(); }
     if (VPR.activeIndex === slider.getSlideCount() - 1) { next.hide(); }
+
+    // register events on page load
+    $('div.play_audio').click(VPR.playAudio);
+    $('i.modal_toggle').click(VPR.updateModal);
+    var audioDivs = $('div.play_audio').each( function() {
+        VPR.canPlay($(this));
+    });
 };
 
 $(document).ready(function () {

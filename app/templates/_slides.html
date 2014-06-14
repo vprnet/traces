@@ -6,53 +6,9 @@
                 <div class="row">
                     <div class="col-sm-10 col-sm-offset-1">
                         <div id="{{ submission.slug }}" class="submission glass">
-
-                            <div class="submission_copy">
-                                {% if submission['image'] %}
-                                    <div class="image_block {% if submission.landscape %}landscape{% else %}pull-left{% endif %}">
-                                        <img class="submission_img img-responsive" src="{{ submission['image'] }}">
-                                        {% if not submission.landscape %}
-                                        <p><i data_src="{{ submission.image }}" class="modal_toggle icon ion-arrow-expand"></i></p>
-                                        {% endif %}
-                                    </div>
-
-                                {% elif submission['audio'] %}
-                                <div class="audio_box pull-left">
-                                    <div class="play_audio">
-                                        <audio src="{{ submission.audio }}" type="audio/mpeg" preload="auto"></audio>
-                                        <h3><i class="icon ion-ios7-play"></i></h3>
-                                    </div>
-                                    <p class="tell_story">Hear {{ submission.firstname }} <br /> Tell {{ submission.gender|title }} Story</p>
-                                </div>
-                                {% endif %}
-
-                                {% for paragraph in submission['paragraphs'] %}
-                                {% if loop.index == 2 %}
-                                <blockquote>{{ submission['copy'] }}</blockquote>
-                                {% endif %}
-                                {{ paragraph.replace(' -- ', '&mdash;')|safe }}
-                                {% endfor %}
-                                <h2>- {% if submission.firstname %}{{ submission.firstname }} {{ submission.lastname }}{% else %}Anonymous{% endif %}</h2>
-                                <div class="row share_container">
-                                    <div class="col-sm-6">
-                                        <hr>
-                                        <p>Share {% if submission.firstname %}{{ submission.firstname }}'s {% else %}their {% endif %}story:</p>
-                                        <div class="row social_pills">
-                                            <div class="col-xs-6">
-                                                <p><a class="pill" href="https://www.facebook.com/dialog/feed?app_id=282283015178&picture={{ this_social.img|urlencode }}&name={{ this_social.title|urlencode }}&caption={{ this_social.subtitle|urlencode }}&description={{ this_social.description|urlencode }}&redirect_uri={{ page_url|urlencode }}/{{ submission.slug }}" target="_blank"><i class="icon ion-social-facebook"></i></a></p>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <p><a class="pill" href="http://www.twitter.com/intent/tweet?url={{ page_url|urlencode }}/{{ submission.slug }}&text={{ this_social.twitter_text|urlencode }}&via=vprnet&hashtags={{ this_social.twitter_hashtag|urlencode }}" target="_blank"><i class="icon ion-social-twitter"></i></a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <hr>
-                                        <p>Share your story:</p>
-                                        <p><a class="pill" href="{{ url_for('share') }}">Submit a trace</a></p>
-                                    </div>
-                                </div>
-                            </div>
+                            {% with slide=submission %}
+                            {% include "_slide.html" %}
+                            {% endwith %}
                         </div>
                     </div>
                 </div>
@@ -65,46 +21,9 @@
                 <div class="row">
                     <div class="col-sm-10 col-sm-offset-1">
                         <div id="{{ next_trace.slug }}" class="next_trace glass">
-
-                            <div class="submission_copy">
-                                {% if next_trace.image %}
-                                    <div class="image_block {% if next_trace.landscape %}landscape{% else %}pull-left{% endif %}">
-                                        <img class="submission_img img-responsive" src="{{ next_trace['image'] }}">
-                                        <p><i data_src="{{ next_trace.image }}" class="modal_toggle icon ion-arrow-expand"></i></p>
-                                    </div>
-                                {% elif next_trace.audio %}
-                                <div class="audio_box pull-left">
-                                    <h3><i class="icon ion-ios7-play"></i></h3>
-                                    <p class="tell_story">Hear {{ next_trace.firstname }}<br />Tell {{ next_trace.gender|title }} Story</p>
-                                </div>
-                                {% endif %}
-                                {% for paragraph in next_trace['paragraphs'] %}
-                                {% if loop.index == 2 %}
-                                <blockquote>{{ next_trace['copy'] }}</blockquote>
-                                {% endif %}
-                                <p>{{ paragraph.replace(' -- ', '&mdash;')|safe }}</p>
-                                {% endfor %}
-                                <h2>- {% if next_trace.firstname %}{{ next_trace.firstname }} {{ next_trace.lastname }}{% else %}Anonymous{% endif %}</h2>
-                                <div class="row share_container">
-                                    <div class="col-sm-6">
-                                        <hr>
-                                        <p>Share {% if next_trace.firstname %}{{ next_trace.firstname }}'s {% else %}their {% endif %}story:</p>
-                                        <div class="row social_pills">
-                                            <div class="col-xs-6">
-                                                <p><a class="pill" href="https://www.facebook.com/dialog/feed?app_id=282283015178&picture={{ next_social.img|urlencode }}&name={{ next_social.title|urlencode }}&caption={{ next_social.subtitle|urlencode }}&description={{ next_social.description|urlencode }}&redirect_uri={{ page_url|urlencode }}/{{ next_trace.slug }}" target="_blank"><i class="icon ion-social-facebook"></i></a></p>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <p><a class="pill" href="http://www.twitter.com/intent/tweet?url={{ page_url|urlencode }}/{{ next_trace.slug }}&text={{ next_social.twitter_text|urlencode }}&via=vprnet&hashtags={{ next_social.twitter_hashtag|urlencode }}" target="_blank"><i class="icon ion-social-twitter"></i></a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <hr>
-                                        <p>Share your story:</p>
-                                        <p><a class="pill" href="{{ url_for('share') }}">Submit a trace</a></p>
-                                    </div>
-                                </div>
-                            </div>
+                        {% with slide=next_trace %}
+                        {% include "_slide.html" %}
+                        {% endwith %}
                         </div>
                     </div>
                 </div>

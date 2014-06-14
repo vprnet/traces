@@ -27,7 +27,7 @@ def index():
     else:
         next_img = 'http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg'
 
-    next_social = {
+    next_trace['social'] = {
         'title': "Traces:" + next_trace['title'],
         'subtitle': "What Reminds You",
         'img': next_img,
@@ -39,7 +39,6 @@ def index():
     return render_template('index.html',
         submission=submission,
         next_trace=next_trace,
-        next_social=next_social,
         slugs=slugs,
         links=links,
         page_title=page_title,
@@ -70,7 +69,7 @@ def share():
     else:
         next_img = 'http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg'
 
-    next_social = {
+    next_trace['social'] = {
         'title': "Traces:" + next_trace['title'],
         'subtitle': "What Reminds You",
         'img': next_img,
@@ -82,7 +81,6 @@ def share():
     return render_template('index.html',
         submission=submission,
         next_trace=next_trace,
-        next_social=next_social,
         slugs=slugs,
         links=links,
         page_title=page_title,
@@ -104,7 +102,7 @@ def post(title):
     else:
         this_img = 'http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg'
 
-    this_social = {
+    submission['social'] = {
         'title': "Traces:" + submission['title'],
         'subtitle': "What Reminds You",
         'img': this_img,
@@ -118,7 +116,7 @@ def post(title):
             next_img = next_trace['image']
         else:
             next_img = 'http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg'
-        next_social = {
+        next_trace['social'] = {
             'title': "Traces:" + next_trace['title'],
             'subtitle': "What Reminds You",
             'img': next_img,
@@ -126,13 +124,9 @@ def post(title):
             'twitter_text': "",
             'twitter_hashtag': "VtTraces"
         }
-    else:
-        next_social = False
 
     return render_template('submission.html',
         page_title=page_title,
-        this_social=this_social,
-        next_social=next_social,
         navbar_h1=navbar_h1,
         submission=submission,
         slugs=slugs,

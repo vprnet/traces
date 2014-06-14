@@ -1,0 +1,19 @@
+<div class="row share_container">
+    <div class="col-sm-6">
+        <hr>
+        <p>Share {% if slide.firstname %}{{ slide.firstname }}'s {% else %}their {% endif %}story:</p>
+        <div class="row social_pills">
+            <div class="col-xs-6">
+                <p><a class="pill" href="https://www.facebook.com/dialog/feed?app_id=282283015178&picture={{ slide.social.img|urlencode }}&name={{ slide.social.title|urlencode }}&caption={{ slide.social.subtitle|urlencode }}&description={{ slide.social.description|urlencode }}&redirect_uri={{ page_url|urlencode }}/{{ slide.slug }}" target="_blank"><i class="icon ion-social-facebook"></i></a></p>
+            </div>
+            <div class="col-xs-6">
+                <p><a class="pill" href="http://www.twitter.com/intent/tweet?url={{ page_url|urlencode }}/{{ slide.slug }}&text={{ slide.social.twitter_text|urlencode }}&via=vprnet&hashtags={{ slide.social.twitter_hashtag|urlencode }}" target="_blank"><i class="icon ion-social-twitter"></i></a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <hr>
+        <p>Share your story:</p>
+        <p><a class="pill" href="{{ url_for('share') }}">Submit a trace</a></p>
+    </div>
+</div>

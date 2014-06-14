@@ -1,0 +1,20 @@
+div.audio_box {
+    background: $white;
+    opacity: 0.5;
+    border: 2px solid $white;
+    @include border-radius(2px);
+    padding: 20px;
+    margin: 5px 25px 10px 0px;
+    min-width: 40%;
+    p {
+        text-align: center;
+        color: black;
+        &.tell_story {
+            font-weight: 500;
+        }
+        &.audio_control {
+            font-size: 72px;
+            margin-bottom: 0;
+        }
+    }
+}
