@@ -170,7 +170,7 @@ VPR.getAdjacentSlides = function() {
 
 VPR.swipeAction = function() {
     var swipeText = $('p.swiper_prompt');
-    swipeText.transition({x: 80, delay: 900}, 500)
+    swipeText.transition({x: 80, delay: 1200}, 500)
         .transition({x: -80}, 500)
         .transition({x: 0}, 500);
 };
