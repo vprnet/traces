@@ -7,6 +7,9 @@ div.share_container {
         margin-bottom: 30px !important;
         a {
             font-size: 1em;
+            @media (max-width: $phone) {
+                font-size: 0.8em;
+            }
         }
     }
     .social_pills {
@@ -16,6 +19,9 @@ div.share_container {
             @media (max-width: $laptop) and (min-width: $tablet),
             (max-width: $phone) {
                 padding: 0.35em 1.5em;
+            }
+            @media (max-width: $phone) {
+                font-size: 0.8em;
             }
             font-size: 1.2em;
         }

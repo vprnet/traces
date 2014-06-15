@@ -1,3 +1,9 @@
+if (window.location.href.indexOf("127.0.0.1") >= 0) {
+    window.DEBUG = true;
+} else {
+    window.DEBUG = false;
+}
+
 var VPR = VPR || {},
     slider = $('.bxslider'),
     next = $('#slider_next'),
@@ -14,18 +20,16 @@ slider.bxSlider({
     startSlide: VPR.activeIndex
 });
 
-
-VPR.slideToShare = function(event) {
-    event.preventDefault();
-    prev.fadeOut();
-    History.pushState({slide: 0}, null, VPR.submissions[0]);
-};
-
-
 $('#home_link').click(function(event) {
     event.preventDefault();
-    //var newState = '/';
-    var newState = '/apps/sandbox/';
+    var newState;
+
+    if (DEBUG) {
+        newState = '/';
+    } else {
+        newState = '/apps/sandbox/';
+    }
+
     VPR.loadSlide(1);
     if (VPR.activeIndex === slider.getSlideCount() - 1) {
         next.fadeIn();
@@ -34,12 +38,17 @@ $('#home_link').click(function(event) {
     History.pushState({slide: 1}, null, newState);
 });
 
+
 next.click(function(event) {
     event.preventDefault();
     // Landing page served from root, it's submission[i] == ''
     var newState = VPR.submissions[VPR.activeIndex + 1];
-    //if (newState === 'landing') { newState = '/'; }
-    if (newState === 'landing') { newState = '/apps/sandbox/'; }
+
+    if (DEBUG) {
+        if (newState === 'landing') { newState = '/'; }
+    } else {
+        if (newState === 'landing') { newState = '/apps/sandbox/'; }
+    }
 
     if (VPR.activeIndex === 0) {
         prev.fadeIn();
@@ -56,8 +65,12 @@ next.click(function(event) {
 prev.click(function(event) {
     event.preventDefault();
     var newState = VPR.submissions[VPR.activeIndex - 1];
-    //if (newState === 'landing') { newState = '/'; }
-    if (newState === 'landing') { newState = '/apps/sandbox/'; }
+
+    if (DEBUG) {
+        if (newState === 'landing') { newState = '/'; }
+    } else {
+        if (newState === 'landing') { newState = '/apps/sandbox/'; }
+    }
 
     if (VPR.activeIndex === 1) {
         prev.fadeOut();
@@ -108,15 +121,21 @@ History.Adapter.bind(window, 'statechange', function () {
 
 VPR.loadSlide = function (idx) {
     var slideID = VPR.submissions[idx],
-        slideURL = slideID;
+        slideURL = slideID,
+        getUrl;
 
     if (slideID === 'landing') { slideURL = ''; }
+
+    if (DEBUG) {
+        getURL = '/' + slideURL;
+    } else {
+        getURL = '/apps/sandbox/' + slideURL;
+    }
 
     // If the slide does not have any content
     if (!$('#' + slideID).children().length) {
         // Load the page of the slide with AJAX
-        //$.get('/' + slideURL, function(data) {
-        $.get('/apps/sandbox/' + slideURL, function(data) {
+        $.get(getURL, function(data) {
             // grab the slide from the returned page content
             var slide = $(data).find('#' + slideID);
             // replace the slide container with the actual slide content
