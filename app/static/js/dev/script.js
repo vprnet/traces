@@ -17,7 +17,10 @@ slider.bxSlider({
     adaptiveHeight: true,
     adaptiveHeightSpeed: 1,
     touchEnabled: true,
-    startSlide: VPR.activeIndex
+    startSlide: VPR.activeIndex,
+    onSlideBefore: function(el, oldIndex, newIndex) {
+        VPR.updateSlide(newIndex);
+    }
 });
 
 $('#home_link').click(function(event) {
@@ -38,33 +41,23 @@ $('#home_link').click(function(event) {
     History.pushState({slide: 1}, null, newState);
 });
 
+next.click(function(event) {
+    event.preventDefault();
+});
 
 next.click(function(event) {
     event.preventDefault();
-    // Landing page served from root, it's submission[i] == ''
-    var newState = VPR.submissions[VPR.activeIndex + 1];
-
-    if (DEBUG) {
-        if (newState === 'landing') { newState = '/'; }
-    } else {
-        if (newState === 'landing') { newState = '/apps/sandbox/'; }
-    }
-
-    if (VPR.activeIndex === 0) {
-        prev.fadeIn();
-    } else if (VPR.activeIndex === slider.getSlideCount() -2) {
-        next.fadeOut();
-    }
-
-    if ( VPR.activeIndex < slider.getSlideCount() - 1 ) {
-        History.pushState({slide: VPR.activeIndex + 1}, null, newState);
-    }
-
+    slider.goToNextSlide();
 });
 
 prev.click(function(event) {
     event.preventDefault();
-    var newState = VPR.submissions[VPR.activeIndex - 1];
+    slider.goToPrevSlide();
+});
+
+VPR.updateSlide = function(newIndex) {
+    $('.swiper_bg').addClass('invisible');
+    var newState = VPR.submissions[newIndex];
 
     if (DEBUG) {
         if (newState === 'landing') { newState = '/'; }
@@ -72,32 +65,26 @@ prev.click(function(event) {
         if (newState === 'landing') { newState = '/apps/sandbox/'; }
     }
 
-    if (VPR.activeIndex === 1) {
+    if (newIndex === 0) {
         prev.fadeOut();
-    } else if (VPR.activeIndex === slider.getSlideCount() -1) {
+    } else if (newIndex === slider.getSlideCount() -1) {
         next.fadeIn();
     }
 
-    if ( VPR.activeIndex > 0 ) {
-        History.pushState({slide: VPR.activeIndex - 1}, null, newState);
-    }
-});
+    History.pushState({slide: newIndex}, null, newState);
+};
 
 
 VPR.updateModal = function() {
-    console.log('click');
-
     var modalImg = $('#tracesModal img'),
         imageSrc = $(this).attr('data_src');
 
     // if no image on active slide
     if (!modalImg.length) {
-        console.log("no image in modal");
         var newImage = $('<img>').attr('src', imageSrc);
         $('#tracesModal .modal-content').append(newImage);
     // else, update image src
     } else {
-        console.log("image already in modal");
         modalImg.attr('src', imageSrc);
     }
     $('#tracesModal').modal();
@@ -146,7 +133,10 @@ VPR.loadSlide = function (idx) {
                 controls: false,
                 adaptiveHeight: true,
                 adaptiveHeightSpeed: 1,
-                startSlide: VPR.activeIndex
+                startSlide: VPR.activeIndex,
+                onSlideBefore: function(el, oldIndex, newIndex) {
+                    VPR.updateSlide(newIndex);
+                }
             });
 
             // register events for dynamic content

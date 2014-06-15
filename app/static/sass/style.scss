@@ -117,9 +117,6 @@ a.dk_pill {
 li.slide {
     min-height: 300px;
     display: block;
-    @media (max-width: 850px) {
-        margin-top: 20px;
-    }
 }
 
 .loaded {
