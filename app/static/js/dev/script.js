@@ -136,6 +136,7 @@ VPR.loadSlide = function (idx) {
             var audioDiv = $('#' + slideID + ' div.play_audio');
             audioDiv.click(VPR.playAudio);
             VPR.canPlay(audioDiv);
+            $('.share_story_pill').click(VPR.slideToShare);
 
             if (slideID === 'landing') {
                 $('#share_link').click(VPR.slideToShare);
@@ -176,6 +177,7 @@ VPR.init = function() {
     $('div.play_audio').click(VPR.playAudio);
     $('i.modal_toggle').click(VPR.updateModal);
     $('#share_link').click(VPR.slideToShare);
+    $('.share_story_pill').click(VPR.slideToShare);
     VPR.swipeAction();
     var audioDivs = $('div.play_audio').each( function() {
         VPR.canPlay($(this));
