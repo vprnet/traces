@@ -23,27 +23,19 @@ slider.bxSlider({
     }
 });
 
-$('#home_link').click(function(event) {
-    event.preventDefault();
-    slider.goToSlide(1);
-});
-
-next.click(function(event) {
-    event.preventDefault();
-    slider.goToNextSlide();
-});
-
-prev.click(function(event) {
-    event.preventDefault();
-    slider.goToPrevSlide();
-});
-
 VPR.updateSlide = function(newIndex) {
     $('.swiper_bg').addClass('invisible');
-    var newState = VPR.submissions[newIndex];
+    var newState = VPR.submissions[newIndex],
+        title = newState.toTitleCase().replace(/-/g, ' ');
+
 
     if (DEBUG) {
-        if (newState === 'landing') { newState = '/'; }
+        if (newState === 'landing') {
+            newState = '/';
+            title = "What's Your Story?";
+        } else if (newState === 'share') {
+            title = "Share Your Story";
+        }
     } else {
         if (newState === 'landing') { newState = '/apps/sandbox/'; }
     }
@@ -59,7 +51,9 @@ VPR.updateSlide = function(newIndex) {
         next.fadeIn();
     }
 
-    History.pushState({slide: newIndex}, null, newState);
+    var pageTitle = 'Traces: ' + title;
+
+    History.pushState({slide: newIndex}, pageTitle, newState);
 };
 
 
@@ -162,6 +156,37 @@ VPR.swipeAction = function() {
         .transition({x: 0}, 500);
 };
 
+VPR.registerClicks = function() {
+    $('#home_link').click(function(event) {
+        event.preventDefault();
+        slider.goToSlide(1);
+    });
+
+    next.click(function(event) {
+        event.preventDefault();
+        slider.goToNextSlide();
+    });
+
+    prev.click(function(event) {
+        event.preventDefault();
+        slider.goToPrevSlide();
+    });
+
+    $('#share_link').click(function(event) {
+        event.preventDefault();
+        slider.goToSlide(0);
+    });
+
+    $('.share_story_pill').click(function(event) {
+        event.preventDefault();
+        slider.goToSlide(0);
+    });
+
+    $('div.play_audio').click(VPR.playAudio);
+    $('i.modal_toggle').click(VPR.updateModal);
+};
+
+
 VPR.init = function() {
     VPR.getAdjacentSlides();
     $('body').addClass('loaded');
@@ -170,11 +195,8 @@ VPR.init = function() {
     if (VPR.activeIndex === slider.getSlideCount() - 1) { next.hide(); }
 
     // register events on page load
-    $('div.play_audio').click(VPR.playAudio);
-    $('i.modal_toggle').click(VPR.updateModal);
-    $('#share_link').click(VPR.slideToShare);
-    $('.share_story_pill').click(VPR.slideToShare);
     VPR.swipeAction();
+    VPR.registerClicks();
     var audioDivs = $('div.play_audio').each( function() {
         VPR.canPlay($(this));
     });

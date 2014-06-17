@@ -52,6 +52,7 @@ module.exports = function (grunt) {
                     'js/libs/jquery.transit/jquery.transit.js',
                     'js/libs/history.js/scripts/bundled-uncompressed/html4+html5/jquery.history.js',
                     'js/dev/audio.js',
+                    'js/dev/title-case.js',
                     'js/dev/script.js'
                 ],
                 dest: 'js/build/script.js'
@@ -118,7 +119,10 @@ module.exports = function (grunt) {
         },
         watch: {
             scripts: {
-                files: ['js/dev/script.js', 'js/dev/audio.js'],
+                files: ['js/dev/script.js',
+                    'js/dev/audio.js',
+                    'js/dev/title-case.js'
+                ],
                 tasks: ['modernizr', 'concat', 'uglify'],
                 options: {
                     spawn: false,
