@@ -25,24 +25,7 @@ slider.bxSlider({
 
 $('#home_link').click(function(event) {
     event.preventDefault();
-    var newState;
-
-    if (DEBUG) {
-        newState = '/';
-    } else {
-        newState = '/apps/sandbox/';
-    }
-
-    VPR.loadSlide(1);
-    if (VPR.activeIndex === slider.getSlideCount() - 1) {
-        next.fadeIn();
-    }
-
-    History.pushState({slide: 1}, null, newState);
-});
-
-next.click(function(event) {
-    event.preventDefault();
+    slider.goToSlide(1);
 });
 
 next.click(function(event) {
@@ -67,7 +50,12 @@ VPR.updateSlide = function(newIndex) {
 
     if (newIndex === 0) {
         prev.fadeOut();
-    } else if (newIndex === slider.getSlideCount() -1) {
+    } else {
+        prev.fadeIn();
+    }
+    if (newIndex === slider.getSlideCount() -1) {
+        next.fadeOut();
+    } else {
         next.fadeIn();
     }
 
@@ -94,7 +82,6 @@ VPR.updateModal = function() {
 History.Adapter.bind(window, 'statechange', function () {
     var state = History.getState();
     VPR.activeIndex = state.data.slide;
-
 
     if (VPR.activeIndex === 1) {
         $('h1').fadeOut(500);
