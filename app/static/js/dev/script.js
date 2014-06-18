@@ -11,18 +11,16 @@ var VPR = VPR || {},
 
 VPR.activeIndex = typeof VPR.submissions !== 'undefined' ? VPR.submissions.indexOf(VPR.startSlide) : null;
 
-VPR.sliderOptions = function() {
-    return {
-        infiniteLoop: false,
-        controls: false,
-        adaptiveHeight: true,
-        adaptiveHeightSpeed: 1000,
-        touchEnabled: false,
-        startSlide: VPR.activeIndex,
-        onSlideBefore: function(el, oldIndex, newIndex) {
-            VPR.updateSlide(newIndex);
-        }
-    };
+VPR.sliderOptions = {
+    infiniteLoop: false,
+    controls: false,
+    adaptiveHeight: true,
+    adaptiveHeightSpeed: 1000,
+    touchEnabled: false,
+    startSlide: VPR.activeIndex,
+    onSlideBefore: function(el, oldIndex, newIndex) {
+        VPR.updateSlide(newIndex);
+    }
 };
 
 slider.bxSlider(VPR.sliderOptions);
@@ -143,16 +141,7 @@ VPR.loadSlide = function (idx) {
             });
 
             // register events for dynamic content
-            $('i.modal_toggle').click(VPR.updateModal);
-
-            var audioDiv = $('#' + slideID + ' div.play_audio');
-            audioDiv.click(VPR.playAudio);
-            VPR.canPlay(audioDiv);
-            $('.share_story_pill').click(VPR.slideToShare);
-
-            if (slideID === 'landing') {
-                $('#share_link').click(VPR.slideToShare);
-            }
+            VPR.registerClicks();
         });
     }
 };
@@ -184,6 +173,11 @@ VPR.registerClicks = function() {
         slider.goToSlide(1);
     });
 
+    $('#explore_link').click(function(event) {
+        event.preventDefault();
+        slider.goToNextSlide();
+    });
+
     next.click(function(event) {
         event.preventDefault();
         slider.goToNextSlide();
@@ -204,7 +198,17 @@ VPR.registerClicks = function() {
         slider.goToSlide(0);
     });
 
-    $('div.play_audio').click(VPR.playAudio);
+    $('a.about_project').each(function() {
+        $(this).click(function(event) {
+            event.preventDefault();
+            slider.goToSlide(1);
+        });
+    });
+
+    $('div.play_audio').each(function() {
+        $(this).click(VPR.playAudio);
+    });
+
     $('i.modal_toggle').click(VPR.updateModal);
 };
 

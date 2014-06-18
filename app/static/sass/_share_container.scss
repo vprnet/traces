@@ -16,3 +16,16 @@ div.share_container {
         }
     }
 }
+div.about_traces {
+    p {
+        text-align: center;
+        font-size: 24px;
+        a {
+            border-bottom: 2px solid $white;
+            @include transition(all, 0.25s);
+            &:hover {
+                border-color: $blue;
+            }
+        }
+    }
+}
