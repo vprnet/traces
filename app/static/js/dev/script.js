@@ -11,16 +11,18 @@ var VPR = VPR || {},
 
 VPR.activeIndex = typeof VPR.submissions !== 'undefined' ? VPR.submissions.indexOf(VPR.startSlide) : null;
 
-VPR.sliderOptions = {
-    infiniteLoop: false,
-    controls: false,
-    adaptiveHeight: true,
-    adaptiveHeightSpeed: 1000,
-    touchEnabled: false,
-    startSlide: VPR.activeIndex,
-    onSlideBefore: function(el, oldIndex, newIndex) {
-        VPR.updateSlide(newIndex);
-    }
+VPR.sliderOptions = function() {
+    return {
+        infiniteLoop: false,
+        controls: false,
+        adaptiveHeight: true,
+        adaptiveHeightSpeed: 1000,
+        touchEnabled: false,
+        startSlide: VPR.activeIndex,
+        onSlideBefore: function(el, oldIndex, newIndex) {
+            VPR.updateSlide(newIndex);
+        }
+    };
 };
 
 slider.bxSlider(VPR.sliderOptions);
