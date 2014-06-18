@@ -11,17 +11,19 @@ var VPR = VPR || {},
 
 VPR.activeIndex = typeof VPR.submissions !== 'undefined' ? VPR.submissions.indexOf(VPR.startSlide) : null;
 
-slider.bxSlider({
+VPR.sliderOptions = {
     infiniteLoop: false,
     controls: false,
     adaptiveHeight: true,
     adaptiveHeightSpeed: 1000,
-    touchEnabled: true,
+    touchEnabled: false,
     startSlide: VPR.activeIndex,
     onSlideBefore: function(el, oldIndex, newIndex) {
         VPR.updateSlide(newIndex);
     }
-});
+};
+
+slider.bxSlider(VPR.sliderOptions);
 
 function fbShare(url, title, descr, image, winWidth, winHeight) {
     var winTop = (screen.height / 2) - (winHeight / 2);
@@ -94,6 +96,16 @@ History.Adapter.bind(window, 'statechange', function () {
     VPR.getAdjacentSlides();
 });
 
+$('body').swipe({
+    swipeRight: function() {
+        slider.goToPrevSlide();
+    },
+    swipeLeft: function() {
+        slider.goToNextSlide();
+    },
+    threshold: 50
+});
+
 VPR.loadSlide = function (idx) {
     var slideID = VPR.submissions[idx],
         slideURL = slideID,
@@ -119,6 +131,7 @@ VPR.loadSlide = function (idx) {
             slider.reloadSlider({
                 infiniteLoop: false,
                 controls: false,
+                touchEnabled: false,
                 adaptiveHeight: true,
                 adaptiveHeightSpeed: 1000,
                 startSlide: VPR.activeIndex,

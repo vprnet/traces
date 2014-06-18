@@ -9,8 +9,16 @@
                     <p>Drug addiction affects many in our community. Whether you’ve lost a family member to a drug overdose, lost touch with a friend who uses, or are fighting your own addiction, daily reminders&mdash;objects, places, people&mdash;can be anywhere. <em>Traces</em> is a collection of those reminders and the memories they evoke.</p>
 
                 </div>
-                <p id="share_pill">
-                    <a id="share_link" class="pill" href="{{ url_for('share') }}">Share your story</a></p>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p id="share_pill">
+                            <a id="share_link" class="pill" href="{{ url_for('share') }}">Share your story</a></p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p id="explore_pill">
+                            <a class="pill" href="{{ url_for('post', title=slugs[0]) }}">Explore the project</a></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -4,8 +4,16 @@
 
 #landing {
     padding-bottom: 150px;
-    h2, h3, #share_pill {
+    h2, h3, #share_pill, #explore_pill {
         text-align: center;
+    }
+    #share_pill {
+        @media (max-width: $tablet) {
+            margin-bottom: 3.5em;
+            a.pill {
+                padding: 0.6em 1.7em 0.5em;
+            }
+        }
     }
     h2 {
         margin-bottom: 0;
@@ -57,8 +65,9 @@
         }
     }
     .pill {
-        @media (max-width: $laptop) {
-            font-size: 24px;
+        font-size: 24px;
+        @media (max-width: $big-screen) {
+            font-size: 18px;
         }
     }
 }

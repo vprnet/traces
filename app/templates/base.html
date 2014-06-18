@@ -32,7 +32,7 @@
 
 </head>
 
-<body>
+<body id="hammer_body">
 
 <div id="page_container">
 {% block navbar %}{% include "_navbar.html" %}{% endblock %}
@@ -64,6 +64,7 @@ VPR.submissions = [
     {% for slug in slugs %}
     '{{ slug }}',
     {% endfor %}
+    'your-story'
 ];
 </script>
 <script src="{{ url_for('static', filename='js/build/script.js') }}"></script>

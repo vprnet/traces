@@ -6,28 +6,18 @@ $highlight: #ecfaa7;
 @import "vpr";
 @import "vpr-svg";
 @import "ionicons";
-@import "landing";
-@import "share_page";
-@import "share_container";
-@import "submission";
-@import "image";
-@import "audio";
-@import "navigation";
-@import "bxslider";
-@import "no-svg";
-@import "modal";
 
 
 body {
+    width: 100%;
+    height: 100%;
     opacity: 0;
     font-family: "Raleway";
     font-weight: 300;
-    // font-family: "Averia Libre";
     color: $white;
     @include background-size(cover);
     background-image: url('../img/vpr-collage-small.jpg');
     background-attachment: fixed;
-    // -webkit-font-smoothing: antialiased;
 }
 
 div.page_container {
@@ -129,3 +119,14 @@ li.slide {
         display: none;
     }
 }
+
+@import "landing";
+@import "share_page";
+@import "share_container";
+@import "submission";
+@import "image";
+@import "audio";
+@import "navigation";
+@import "bxslider";
+@import "no-svg";
+@import "modal";
