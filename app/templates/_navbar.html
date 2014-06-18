@@ -9,7 +9,7 @@
                     <div class="icon ion-social-googleplus" target="_blank"></div></a>
                 <a class="share sTwitter" href="http://www.twitter.com/intent/tweet?url={{ page_url|urlencode }}&text={{ social.twitter_text|urlencode }}&via=vprnet&hashtags={{ social.twitter_hashtag|urlencode }}" target="_blank">
                     <div class="icon ion-social-twitter"></div></a>
-                <a class="share sFacebook" href="https://www.facebook.com/dialog/feed?app_id=282283015178&picture={{ social.img|urlencode }}&name={{ social.title|urlencode }}&caption={{ social.subtitle|urlencode }}&description={{ social.description|urlencode }}&redirect_uri={{ page_url|urlencode }}" target="_blank">
+                <a class="share sFacebook" href='javascript:fbShare("{{ page_url }}", "{{ social.title }}", "{{ social.description }}", "{{ social.img }}", 520, 350)' target="_blank">
                     <div class="icon ion-social-facebook"></div></a>
             </div>
         </div>

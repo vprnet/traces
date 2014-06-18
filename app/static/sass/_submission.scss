@@ -26,24 +26,31 @@
         }
     }
     h2.submitter {
-        font-size: 2.5em;
+        font-size: 2.0em;
         text-align: right;
         padding-right: 15px;
-        margin-bottom: 50px;
-        margin-top: 50px;
+        max-width: 690px;
+        margin: 50px auto;
         font-weight: 700;
         @media (max-width: $phone) {
             font-size: 1.5em;
             margin: 20px 0 40px;
         }
     }
+    div.loading {
+        text-align: center;
+        padding: 50px 0 30px;
+        p {
+            font-size: 24px;
+            i {
+                font-size: 72px;
+            }
+        }
+    }
 }
 
 #sam {
     .submission_copy {
-        img {
-            margin-bottom: 30px;
-        }
         p {
             margin: 0;
             text-align: center;
@@ -68,6 +75,7 @@
 
 .glass {
     width: 100%;
+    min-height: 250px;
     padding: 20px;
     @media (max-width: $phone) {
         padding: 0 5px 20px;

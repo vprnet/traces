@@ -5,7 +5,7 @@ from query import get_submission, get_slugs
 
 social = {
     'title': "Traces: Share Your Story",
-    'subtitle': "",
+    'subtitle': "A VPR Project",
     'img': "http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg",
     'description': "When you've lost - or lost touch with - a relative or friend because of drug addiction, reminders of that person can be anywhere. Help VPR build a collection of those reminders and the memories they evoke.",
     'twitter_text': "Have you lost - or lost touch with - someone because of drug addiction? Share your story:",
@@ -16,6 +16,7 @@ social = {
 @app.route('/')
 def index():
     page_url = BASE_URL + request.path
+    page_url = page_url.strip('/')
     page_title = 'Traces: What Reminds You?'
     slugs, links = get_slugs(title=False)
     x, next_trace = get_submission(title=False)
@@ -29,7 +30,7 @@ def index():
 
     next_trace['social'] = {
         'title': "Traces: " + next_trace['title'],
-        'subtitle': "What Reminds You?",
+        'subtitle': "A VPR Project",
         'img': next_img,
         'description': next_trace['copy'],
         'twitter_text': "",
@@ -57,7 +58,7 @@ def share():
 
     social = {
         'title': "Traces: Share Your Story",
-        'subtitle': "",
+        'subtitle': "A VPR Project",
         'img': "http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg",
         'description': "When you've lost - or lost touch with - a relative or friend because of drug addiction, reminders of that person can be anywhere. Help VPR build a collection of those reminders and the memories they evoke.",
         'twitter_text': "Have you lost - or lost touch with - someone because of drug addiction? Share your story:",
@@ -71,7 +72,7 @@ def share():
 
     next_trace['social'] = {
         'title': "Traces:" + next_trace['title'],
-        'subtitle': "What Reminds You",
+        'subtitle': "A VPR Project",
         'img': next_img,
         'description': next_trace['copy'],
         'twitter_text': "",
@@ -104,7 +105,7 @@ def post(title):
 
     submission['social'] = {
         'title': "Traces: " + submission['title'],
-        'subtitle': "What Reminds You?",
+        'subtitle': "A VPR Project",
         'img': this_img,
         'description': submission['copy'],
         'twitter_text': "",
@@ -118,7 +119,7 @@ def post(title):
             next_img = 'http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg'
         next_trace['social'] = {
             'title': "Traces: " + next_trace['title'],
-            'subtitle': "What Reminds You?",
+            'subtitle': "A VPR Project",
             'img': next_img,
             'description': next_trace['copy'],
             'twitter_text': "",

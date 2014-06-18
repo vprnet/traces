@@ -15,13 +15,19 @@ slider.bxSlider({
     infiniteLoop: false,
     controls: false,
     adaptiveHeight: true,
-    adaptiveHeightSpeed: 1,
+    adaptiveHeightSpeed: 1000,
     touchEnabled: true,
     startSlide: VPR.activeIndex,
     onSlideBefore: function(el, oldIndex, newIndex) {
         VPR.updateSlide(newIndex);
     }
 });
+
+function fbShare(url, title, descr, image, winWidth, winHeight) {
+    var winTop = (screen.height / 2) - (winHeight / 2);
+    var winLeft = (screen.width / 2) - (winWidth / 2);
+    window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
+}
 
 VPR.updateSlide = function(newIndex) {
     $('.swiper_bg').addClass('invisible');
@@ -83,6 +89,7 @@ History.Adapter.bind(window, 'statechange', function () {
         $('h1').fadeIn();
     }
 
+    VPR.loadSlide(VPR.activeIndex);
     slider.goToSlide(VPR.activeIndex);
     VPR.getAdjacentSlides();
 });
@@ -101,7 +108,7 @@ VPR.loadSlide = function (idx) {
     }
 
     // If the slide does not have any content
-    if (!$('#' + slideID).children().length) {
+    if ($('#' + slideID).children().length <= 1) {
         // Load the page of the slide with AJAX
         $.get(getURL, function(data) {
             // grab the slide from the returned page content
@@ -113,7 +120,7 @@ VPR.loadSlide = function (idx) {
                 infiniteLoop: false,
                 controls: false,
                 adaptiveHeight: true,
-                adaptiveHeightSpeed: 1,
+                adaptiveHeightSpeed: 1000,
                 startSlide: VPR.activeIndex,
                 onSlideBefore: function(el, oldIndex, newIndex) {
                     VPR.updateSlide(newIndex);
