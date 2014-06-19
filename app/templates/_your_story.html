@@ -1,0 +1,47 @@
+{% if submission.slug == 'your-story' or submission.slug == slugs[-1] %}
+<!-- Share Slide-->
+<li class="slide">
+    <div id="your-story" class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                <h2>Tell Us Your Story</h2>
+                <div class="pull_right">
+                    <p><em>Traces</em> is an attempt to catalog how drug addiction affects us, and how we think about it: Loss, anger, confusion&mdash;and sometimes hope. What you share might be deeply personal but otherwise ordinary: a photograph of a place filled with memories, the story of your greatest victory&mdash;or loss&mdash;a description of a certain smell or taste, or the one thing that has kept you going.</p>
+                    <p>Tell us your story and help us explore the deep and subtle ways that drug addiction in Vermont leaves its mark.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 col-sm-6">
+                <div class="share_prompt">
+                    <p class="ionicon"><a href="mailto:share@vpr.net"><span class="icon ion-camera"></span></a></p>
+                    <h3><a href="mailto:share@vpr.net">Share A Photo</a></h3>
+                    <p>Email us at <a href="mailto:share@vpr.net">share@vpr.net</a> with a photograph and a short description of a place, person or object that either reminds you of someone you’ve lost, or motivates you to stay clean.</p>
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-6">
+                <div class="share_prompt">
+                    <p class="ionicon"><a href="tel:8025528899"><span class="icon ion-mic-a"></span></a></p>
+                    <h3><a href="tel:8025528899">Record Your Story</a></h3>
+                    <p class="pull_right">Call <a href="tel:8025528899">802-552-8899</a> and leave us a message. Tell us about whatever it is that reminds you of someone you’ve lost to drug addiction, or what keeps you going on the path to recovery.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="pdf_share">Want to share the project? <a href="{{ url_for('static', filename='pdf/vpr-traces-poster.pdf') }}">Print out a poster.</a></p>
+            </div>
+        </div>
+    </div>
+</li>
+{% else %}
+<li class="slide">
+    <div id="your-story">
+        <div class="loading">
+            <p><i class="icon ion-loading-c"></i></p>
+            <p>Loading...</p>
+        </div>
+    </div>
+</li>
+{% endif %}
