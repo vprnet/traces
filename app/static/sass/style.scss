@@ -9,7 +9,6 @@ $highlight: #ecfaa7;
 
 
 body {
-    opacity: 0;
     font-family: "Raleway";
     font-weight: 300;
     color: $white;
@@ -26,6 +25,7 @@ div.background_image {
 
 
 div.page_container {
+    opacity: 0;
     position: relative;
 }
 

@@ -20,6 +20,7 @@ VPR.sliderOptions = {
     startSlide: VPR.activeIndex,
     onSlideBefore: function(el, oldIndex, newIndex) {
         VPR.updateSlide(newIndex);
+        $('body').animate({ scrollTop: 0 }, 200);
     }
 };
 
@@ -32,7 +33,6 @@ function fbShare(url, title, descr, image, winWidth, winHeight) {
 }
 
 VPR.updateSlide = function(newIndex) {
-    $('.swiper_bg').addClass('invisible');
     var newState = VPR.submissions[newIndex],
         title = newState.toTitleCase().replace(/-/g, ' ');
 
@@ -82,7 +82,17 @@ VPR.updateModal = function() {
 
 
 History.Adapter.bind(window, 'statechange', function () {
-    var state = History.getState();
+    var state = History.getState(),
+        audioDiv = $('div.play_audio');
+
+    if (audioDiv.length) {
+        audioDiv.each(function() {
+            var icon = $(this).find('i.icon');
+            $(this).children('audio')[0].pause();
+            VPR.toggleController(icon, 'play');
+        });
+    }
+
     VPR.activeIndex = state.data.slide;
 
     if (VPR.activeIndex === 1) {
@@ -96,15 +106,21 @@ History.Adapter.bind(window, 'statechange', function () {
     VPR.getAdjacentSlides();
 });
 
-$('body').swipe({
-    swipeRight: function() {
-        slider.goToPrevSlide();
-    },
-    swipeLeft: function() {
-        slider.goToNextSlide();
-    },
-    threshold: 50
-});
+
+if ($('html').hasClass('touch')) {
+    console.log('touch');
+    $('body').swipe({
+        swipeRight: function() {
+            slider.goToPrevSlide();
+            $('.chevrons').addClass('invisible');
+        },
+        swipeLeft: function() {
+            slider.goToNextSlide();
+            $('.chevrons').addClass('invisible');
+        },
+        threshold: 50
+    });
+}
 
 VPR.loadSlide = function (idx) {
     var slideID = VPR.submissions[idx],
@@ -137,16 +153,12 @@ VPR.loadSlide = function (idx) {
                 startSlide: VPR.activeIndex,
                 onSlideBefore: function(el, oldIndex, newIndex) {
                     VPR.updateSlide(newIndex);
+                    $('body').animate({ scrollTop: 0 }, 200);
                 }
             });
 
             // register events for dynamic content
             VPR.registerClicks();
-            /*
-            var audioDiv = $('#' + slideID + ' div.play_audio');
-            audioDiv.click(VPR.playAudio);
-            VPR.canPlay(audioDiv);
-            */
         });
     }
 };
@@ -167,8 +179,8 @@ VPR.getAdjacentSlides = function() {
 
 VPR.swipeAction = function() {
     var swipeText = $('p.swiper_prompt');
-    swipeText.transition({x: 80, delay: 1200}, 500)
-        .transition({x: -80}, 500)
+    swipeText.transition({x: 60, delay: 2000}, 500)
+        .transition({x: -40}, 500)
         .transition({x: 0}, 500);
 };
 
@@ -220,7 +232,7 @@ VPR.registerClicks = function() {
 
 VPR.init = function() {
     VPR.getAdjacentSlides();
-    $('body').addClass('loaded');
+    $('#page_container').addClass('loaded');
     if (VPR.activeIndex === 1) { $('h1').hide(); }
     if (VPR.activeIndex === 0) { prev.hide(); }
     if (VPR.activeIndex === slider.getSlideCount() - 1) { next.hide(); }

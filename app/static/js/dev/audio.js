@@ -46,10 +46,14 @@ VPR.canPlay = function(audioDiv) {
                 icon = audioDiv.find('i.icon');
 
             if ($('html').hasClass('touch')) {
-                VPR.toggleController(icon, 'play');
+                window.setTimeout(function() {
+                    VPR.toggleController(icon, 'play');
+                }, 1000);
             } else {
                 audio.addEventListener('canplay', function() {
-                    VPR.toggleController(icon, 'play');
+                    window.setTimeout(function() {
+                        VPR.toggleController(icon, 'play');
+                    }, 1000);
                 });
             }
             audioDiv.click(VPR.playAudio);

@@ -4,11 +4,11 @@ from config import BASE_URL
 from query import get_submission, get_slugs, get_social
 
 social = {
-    'title': "Traces: Share Your Story",
-    'subtitle': "A VPR Project",
+    'title': "Traces: A VPR Project",
+    'subtitle': "",
     'img': "http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg",
-    'description': "When you've lost - or lost touch with - a relative or friend because of drug addiction, reminders of that person can be anywhere. Help VPR build a collection of those reminders and the memories they evoke.",
-    'twitter_text': "Have you lost - or lost touch with - someone because of drug addiction? Share your story:",
+    'description': "Drug addiction affects many in the Vermont community. Traces is an attempt to catalog the memories and feelings of Vermonters affected by addiction, and an exploration of the deep and subtle ways that addiction leaves its mark.",
+    'twitter_text': "VPR is exploring the deep and subtle ways that drug addiction in Vermont leaves its mark.",
     'twitter_hashtag': "VT, VtTraces"
 }
 
@@ -53,12 +53,12 @@ def share():
     slugs, links = get_slugs(title=False)
     next_social, unused = get_social(title=next_trace['slug'])
 
-    social = {
-        'title': "Traces: Share Your Story",
-        'subtitle': "A VPR Project",
+    share_social = {
+        'title': "VPR's Traces Project: Share Your Story",
+        'subtitle': "",
         'img': "http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg",
-        'description': "When you've lost - or lost touch with - a relative or friend because of drug addiction, reminders of that person can be anywhere. Help VPR build a collection of those reminders and the memories they evoke.",
-        'twitter_text': "Have you lost - or lost touch with - someone because of drug addiction? Share your story:",
+        'description': "Traces is an attempt to catalog how drug addiction affects us, and how we think about it: loss, anger, confusion -- and sometimes hope. What's your story?",
+        'twitter_text': "Drug addiction affects many in the Vermont community. What's your story?",
         'twitter_hashtag': "VT, VtTraces"
     }
 
@@ -77,6 +77,7 @@ def share():
         slugs=slugs,
         links=links,
         page_title=page_title,
+        share_social=share_social,
         social=social,
         navbar_h1=navbar_h1,
         page_url=page_url)
@@ -118,4 +119,44 @@ def post(title):
         slugs=slugs,
         links=links,
         next_trace=next_trace,
+        page_url=page_url)
+
+
+@app.route('/your-story')
+def your_story():
+    page_url = BASE_URL + request.path
+    navbar_h1 = True
+    page_title = 'TRACES: Share Your Story'
+    x, next_trace = get_submission(title=False)
+    submission = {'slug': 'your-story'}
+    slugs, links = get_slugs(title=False)
+    next_social, unused = get_social(title=next_trace['slug'])
+
+    share_social = {
+        'title': "VPR's Traces Project: Share Your Story",
+        'subtitle': "",
+        'img': "http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg",
+        'description': "Traces is an attempt to catalog how drug addiction affects us, and how we think about it: loss, anger, confusion -- and sometimes hope. What's your story?",
+        'twitter_text': "Drug addiction affects many in the Vermont community. What's your story?",
+        'twitter_hashtag': "VT, VtTraces"
+    }
+
+    next_trace['social'] = {
+        'title': next_social['facebooktitle'],
+        'subtitle': next_social['facebooksubtitle'],
+        'img': next_social['facebookimage'],
+        'description': next_social['facebookdescription'],
+        'twitter_text': next_social['twittertext'],
+        'twitter_hashtag': "VT,VtTraces"
+    }
+
+    return render_template('index.html',
+        submission=submission,
+        next_trace=next_trace,
+        slugs=slugs,
+        links=links,
+        page_title=page_title,
+        share_social=share_social,
+        social=social,
+        navbar_h1=navbar_h1,
         page_url=page_url)

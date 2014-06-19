@@ -8,25 +8,6 @@
     }
     .swiper_bg {
         display: none;
-        @include transition(opacity, 0.3s);
-        @media (max-width: 850px) {
-            display: block;
-            background: darken($black, 20%);
-            position: relative;
-            padding: 7px 0;
-            width: 100%;
-        }
-        .swiper_prompt {
-            @media (max-width: 850px) {
-                width: 100%;
-                text-align: center;
-                font-size: 18px;
-            }
-        }
-        &.invisible {
-            opacity: 0;
-        }
-
     }
     .next,
     .prev {
@@ -45,9 +26,6 @@
             margin-top: -45px;
             padding: 5px 10px;
         }
-        @media (max-width: $phone) {
-            display: none !important;
-        }
     }
     .next {
         right: 0;
@@ -59,6 +37,73 @@
         left: 0;
         @media (max-width: 850px) {
             left: 12px;
+        }
+    }
+}
+
+.touch {
+    .chevrons {
+        @media (max-width: 850px) {
+            position: fixed;
+            z-index: 1;
+            bottom: 0;
+            width: 100%;
+            height: 40px;
+        }
+        .swiper_bg {
+            display: none;
+            @include transition(opacity, 0.3s);
+            @media (max-width: 850px) {
+                display: block;
+                background: darken($black, 20%);
+                position: relative;
+                padding: 7px 0;
+                width: 100%;
+            }
+            .swiper_prompt {
+                @media (max-width: 850px) {
+                    width: 100%;
+                    text-align: center;
+                    font-size: 18px;
+                }
+            }
+            &.invisible {
+                opacity: 0;
+            }
+
+        }
+        .next,
+        .prev {
+            display: block;
+            padding: 0 20px;
+            position: fixed;
+            top: 50%;
+            margin-top: -46px;
+            z-index: 1;
+            color: white;
+            font-size: 92px;
+            @media (max-width: 850px) {
+                font-size: 32px;
+                position: absolute;
+                top: 44px;
+                margin-top: -45px;
+                padding: 5px 10px;
+            }
+            @media (max-width: $phone) {
+                display: none !important;
+            }
+        }
+        .next {
+            right: 0;
+            @media (max-width: 850px) {
+                right: 18px;
+            }
+        }
+        .prev {
+            left: 0;
+            @media (max-width: 850px) {
+                left: 12px;
+            }
         }
     }
 }
