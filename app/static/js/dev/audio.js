@@ -1,3 +1,11 @@
+if (document.createElement('audio').canPlayType) {
+    if (!document.createElement('audio').canPlayType('audio/mpeg')) {
+        var all_audio = $('div.play_audio');
+        all_audio.attr("style", "display: none;");
+        $('.no_audio_support').attr("style", "display: block");
+    }
+}
+
 var VPR = VPR || {};
 
 VPR.audioPaused = true;
@@ -33,13 +41,19 @@ VPR.canPlay = function(audioDiv) {
     if (!audioDiv.length) {
         return false;
     } else {
-        var audio = audioDiv.children('audio')[0],
-            icon = audioDiv.find('i.icon');
+        if (!audioDiv.hasClass('can_play')) {
+            var audio = audioDiv.children('audio')[0],
+                icon = audioDiv.find('i.icon');
 
-        audio.addEventListener('canplay', function() {
-            console.log('canplay');
-            VPR.toggleController(icon, 'play');
+            if ($('html').hasClass('touch')) {
+                VPR.toggleController(icon, 'play');
+            } else {
+                audio.addEventListener('canplay', function() {
+                    VPR.toggleController(icon, 'play');
+                });
+            }
             audioDiv.click(VPR.playAudio);
-        });
+            audioDiv.addClass('can_play');
+        }
     }
 };

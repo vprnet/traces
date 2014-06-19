@@ -59,49 +59,6 @@ module.exports = function (grunt) {
                 dest: 'js/build/script.js'
             }
         },
-        modernizr: {
-            dist: {
-                // [REQUIRED] Path to the build you're using for development.
-                "devFile" : "js/libs/modernizr/modernizr.js",
-
-                // [REQUIRED] Path to save out the built file.
-                "outputFile" : "js/libs/modernizr/modernizr-custom.js",
-
-                // Based on default settings on http://modernizr.com/download/
-                "extra" : {
-                    "shiv" : true,
-                    "printshiv" : false,
-                    "load" : true,
-                    "mq" : false,
-                    "cssclasses" : true
-                },
-
-                // Based on default settings on http://modernizr.com/download/
-                "extensibility" : {
-                    "addtest" : false,
-                    "prefixed" : false,
-                    "teststyles" : false,
-                    "testprops" : false,
-                    "testallprops" : false,
-                    "hasevents" : false,
-                    "prefixes" : false,
-                    "domprefixes" : false
-                },
-
-                // By default, source is uglified before saving
-                "uglify" : true,
-
-                // Define any tests you want to implicitly include.
-                "tests" : [],
-
-                "parseFiles" : true,
-
-                 "files" : {
-                     "src": ['js/dev/script.js']
-                 }
-            }
-
-        },
         uglify: {
             build: {
                 src: 'js/build/script.js',
@@ -124,7 +81,7 @@ module.exports = function (grunt) {
                     'js/dev/audio.js',
                     'js/dev/title-case.js'
                 ],
-                tasks: ['modernizr', 'concat', 'uglify'],
+                tasks: ['concat', 'uglify'],
                 options: {
                     spawn: false,
                     livereload: true
@@ -157,7 +114,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-browser-sync');
-    grunt.loadNpmTasks('grunt-modernizr');
     grunt.loadNpmTasks('grunt-parallel');
 
     // What tasks should be run when "grunt" is entered in the command line
