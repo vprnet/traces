@@ -59,7 +59,7 @@ VPR.updateSlide = function(newIndex) {
         next.fadeIn();
     }
 
-    var pageTitle = 'Traces: ' + title;
+    var pageTitle = 'Traces: ' + title + " | VPR";
 
     History.pushState({slide: newIndex}, pageTitle, newState);
 };
@@ -142,6 +142,11 @@ VPR.loadSlide = function (idx) {
 
             // register events for dynamic content
             VPR.registerClicks();
+            /*
+            var audioDiv = $('#' + slideID + ' div.play_audio');
+            audioDiv.click(VPR.playAudio);
+            VPR.canPlay(audioDiv);
+            */
         });
     }
 };
@@ -205,11 +210,11 @@ VPR.registerClicks = function() {
         });
     });
 
-    $('div.play_audio').each(function() {
-        $(this).click(VPR.playAudio);
-    });
-
     $('i.modal_toggle').click(VPR.updateModal);
+
+    VPR.audioDivs = $('div.play_audio').each( function() {
+        VPR.canPlay($(this));
+    });
 };
 
 
@@ -223,9 +228,6 @@ VPR.init = function() {
     // register events on page load
     VPR.swipeAction();
     VPR.registerClicks();
-    var audioDivs = $('div.play_audio').each( function() {
-        VPR.canPlay($(this));
-    });
 };
 
 $(document).ready(function () {

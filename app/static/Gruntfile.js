@@ -47,7 +47,7 @@ module.exports = function (grunt) {
             dist: {
                 src: [
                     'js/libs/bootstrap/dist/js/bootstrap.js',
-                    'js/libs/modernizr/modernizr-custom.js',
+                    'js/libs/modernizr/modernizr.js',
                     'js/libs/bxslider-4-kallisto/jquery.bxslider.js',
                     'js/libs/jquery.transit/jquery.transit.js',
                     'js/libs/jquery-touchswipe/jquery.touchSwipe.js',

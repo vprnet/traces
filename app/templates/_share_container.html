@@ -4,7 +4,7 @@
         <p>Share {% if slide.firstname %}{{ slide.firstname }}'s {% else %}their {% endif %}story:</p>
         <div class="row social_pills">
             <div class="col-xs-6">
-                <p><a class="pill" href='javascript:fbShare("{{ page_url }}/{{ slide.slug }}", "{{ slide.social.title }}", "{{ slide.social.description }}", "{{ slide.social.img }}", 520, 350)'><i class="icon ion-social-facebook"></i></a></p>
+                <p><a class="pill" href='javascript:fbShare("{{ page_url|urlencode }}/{{ slide.slug }}", "{{ slide.social.title|urlencode }}", "{{ slide.social.description|urlencode }}", "{{ slide.social.img|urlencode }}", 520, 350)'><i class="icon ion-social-facebook"></i></a></p>
             </div>
             <div class="col-xs-6">
                 <p><a class="pill" href="http://www.twitter.com/intent/tweet?url={{ page_url|urlencode }}/{{ slide.slug }}&text={{ slide.social.twitter_text|urlencode }}&via=vprnet&hashtags={{ slide.social.twitter_hashtag|urlencode }}" target="_blank"><i class="icon ion-social-twitter"></i></a></p>

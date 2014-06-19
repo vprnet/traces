@@ -93,6 +93,19 @@ def get_submission(title):
     return matched, next_trace
 
 
+def get_social(title):
+    all_social = get_google_sheet(sheet_id='oxxx4xo')
+    matched = False
+    next_trace = False
+    for submission in all_social:
+        name = slugify(unicode(submission['tracetitle']))
+        if matched and not next_trace:
+            next_trace = submission
+        if title == name:
+            matched = submission
+    return matched, next_trace
+
+
 def get_slugs(title):
     all_submissions = get_google_sheet()
     slugs = [slugify(unicode(i['title'])) for i in all_submissions]

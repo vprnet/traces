@@ -1,7 +1,7 @@
 from index import app
 from flask import render_template, request
 from config import BASE_URL
-from query import get_submission, get_slugs
+from query import get_submission, get_slugs, get_social
 
 social = {
     'title': "Traces: Share Your Story",
@@ -22,19 +22,15 @@ def index():
     x, next_trace = get_submission(title=False)
     slugs, links = get_slugs(title=False)
     submission = {'slug': 'landing'}
-
-    if next_trace['image']:
-        next_img = next_trace['image']
-    else:
-        next_img = 'http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg'
+    next_social, unused = get_social(title=next_trace['slug'])
 
     next_trace['social'] = {
-        'title': "Traces: " + next_trace['title'],
-        'subtitle': "A VPR Project",
-        'img': next_img,
-        'description': next_trace['copy'],
-        'twitter_text': "",
-        'twitter_hashtag': "VtTraces"
+        'title': next_social['facebooktitle'],
+        'subtitle': next_social['facebooksubtitle'],
+        'img': next_social['facebookimage'],
+        'description': next_social['facebookdescription'],
+        'twitter_text': next_social['twittertext'],
+        'twitter_hashtag': "VT,VtTraces"
     }
 
     return render_template('index.html',
@@ -55,6 +51,7 @@ def share():
     x, next_trace = get_submission(title=False)
     submission = {'slug': 'share'}
     slugs, links = get_slugs(title=False)
+    next_social, unused = get_social(title=next_trace['slug'])
 
     social = {
         'title': "Traces: Share Your Story",
@@ -65,18 +62,13 @@ def share():
         'twitter_hashtag': "VT, VtTraces"
     }
 
-    if next_trace['image']:
-        next_img = next_trace['image']
-    else:
-        next_img = 'http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg'
-
     next_trace['social'] = {
-        'title': "Traces:" + next_trace['title'],
-        'subtitle': "A VPR Project",
-        'img': next_img,
-        'description': next_trace['copy'],
-        'twitter_text': "",
-        'twitter_hashtag': "VtTraces"
+        'title': next_social['facebooktitle'],
+        'subtitle': next_social['facebooksubtitle'],
+        'img': next_social['facebookimage'],
+        'description': next_social['facebookdescription'],
+        'twitter_text': next_social['twittertext'],
+        'twitter_hashtag': "VT,VtTraces"
     }
 
     return render_template('index.html',
@@ -97,33 +89,25 @@ def post(title):
     page_title = 'TRACES: What Reminds You?'
     submission, next_trace = get_submission(title)
     slugs, links = get_slugs(title)
-
-    if submission['image']:
-        this_img = submission['image']
-    else:
-        this_img = 'http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg'
+    this_social, next_social = get_social(title=submission['slug'])
 
     submission['social'] = {
-        'title': "Traces: " + submission['title'],
-        'subtitle': "A VPR Project",
-        'img': this_img,
-        'description': submission['copy'],
-        'twitter_text': "",
-        'twitter_hashtag': "VtTraces"
+        'title': this_social['facebooktitle'],
+        'subtitle': this_social['facebooksubtitle'],
+        'img': this_social['facebookimage'],
+        'description': this_social['facebookdescription'],
+        'twitter_text': this_social['twittertext'],
+        'twitter_hashtag': "VT,VtTraces"
     }
 
     if next_trace:
-        if next_trace['image']:
-            next_img = next_trace['image']
-        else:
-            next_img = 'http://www.vpr.net/apps/traces/static/img/vpr-traces-social-image.jpg'
         next_trace['social'] = {
-            'title': "Traces: " + next_trace['title'],
-            'subtitle': "A VPR Project",
-            'img': next_img,
-            'description': next_trace['copy'],
-            'twitter_text': "",
-            'twitter_hashtag': "VtTraces"
+            'title': next_social['facebooktitle'],
+            'subtitle': next_social['facebooksubtitle'],
+            'img': next_social['facebookimage'],
+            'description': next_social['facebookdescription'],
+            'twitter_text': next_social['twittertext'],
+            'twitter_hashtag': "VT,VtTraces"
         }
 
     return render_template('submission.html',
