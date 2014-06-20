@@ -53,7 +53,7 @@ VPR.canPlay = function(audioDiv) {
                 audio.addEventListener('canplay', function() {
                     window.setTimeout(function() {
                         VPR.toggleController(icon, 'play');
-                    }, 1000);
+                    }, 500);
                 });
             }
             audioDiv.click(VPR.playAudio);

@@ -4,6 +4,10 @@ if (window.location.href.indexOf("127.0.0.1") >= 0) {
     window.DEBUG = false;
 }
 
+if (window.location.hash == '#close_window') {
+    window.close();
+}
+
 var VPR = VPR || {},
     slider = $('.bxslider'),
     next = $('#slider_next'),
@@ -24,13 +28,9 @@ VPR.sliderOptions = {
     }
 };
 
-slider.bxSlider(VPR.sliderOptions);
 
-function fbShare(url, title, descr, image, winWidth, winHeight) {
-    var winTop = (screen.height / 2) - (winHeight / 2);
-    var winLeft = (screen.width / 2) - (winWidth / 2);
-    window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
-}
+
+slider.bxSlider(VPR.sliderOptions);
 
 VPR.updateSlide = function(newIndex) {
     var newState = VPR.submissions[newIndex],
@@ -45,7 +45,7 @@ VPR.updateSlide = function(newIndex) {
             title = "Share Your Story";
         }
     } else {
-        if (newState === 'landing') { newState = '/apps/sandbox/'; }
+        if (newState === 'landing') { newState = '/apps/traces/'; }
     }
 
     if (newIndex === 0) {
@@ -59,7 +59,7 @@ VPR.updateSlide = function(newIndex) {
         next.fadeIn();
     }
 
-    var pageTitle = 'Traces: ' + title + " | VPR";
+    var pageTitle = "VPR's Traces Project: " + title + " | VPR";
 
     History.pushState({slide: newIndex}, pageTitle, newState);
 };
@@ -132,7 +132,7 @@ VPR.loadSlide = function (idx) {
     if (DEBUG) {
         getURL = '/' + slideURL;
     } else {
-        getURL = '/apps/sandbox/' + slideURL;
+        getURL = '/apps/traces/' + slideURL;
     }
 
     // If the slide does not have any content

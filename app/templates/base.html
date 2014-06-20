@@ -10,8 +10,7 @@
     <!-- Styles -->
 {% block style %}
     <link href='http://fonts.googleapis.com/css?family=Raleway:600,500,400,300,200,100' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link href="{{ url_for('static', filename='css/style.css') }}?ver=0.3" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}?ver=0.1" rel="stylesheet">
 {% endblock %}
 
 
@@ -69,12 +68,14 @@ VPR.submissions = [
     'your-story'
 ];
 </script>
-<script src="{{ url_for('static', filename='js/build/script.js') }}"></script>
+<script src="{{ url_for('static', filename='js/build/script.min.js') }}?ver=0.1"></script>
 {% endblock %}
+{#
  <script src="//localhost:35729/livereload.js"></script>
 <script type='text/javascript'>//<![CDATA[
     ;document.write("<script defer src='//HOST:3000/socket.io/socket.io.js'><\/script><script defer src='//HOST:3001/client/browser-sync-client.0.9.1.js'><\/script>".replace(/HOST/g, location.hostname));
 //]]></script>
+#}
 
 </body>
 </html>
