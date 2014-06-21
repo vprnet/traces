@@ -185,42 +185,24 @@ VPR.swipeAction = function() {
 };
 
 VPR.registerClicks = function() {
-    $('#home_link').click(function(event) {
-        event.preventDefault();
-        slider.goToSlide(1);
-    });
+    var hasEvent = function(element, action, argument) {
+        if (!element.hasClass('has_event')) {
+            element.click(function(event) {
+                console.log('click event');
+                event.preventDefault();
+                action(argument);
+            });
+            element.addClass('has_event');
+        }
+    };
 
-    $('#explore_link').click(function(event) {
-        event.preventDefault();
-        slider.goToNextSlide();
-    });
-
-    next.click(function(event) {
-        event.preventDefault();
-        slider.goToNextSlide();
-    });
-
-    prev.click(function(event) {
-        event.preventDefault();
-        slider.goToPrevSlide();
-    });
-
-    $('#share_link').click(function(event) {
-        event.preventDefault();
-        slider.goToSlide(0);
-    });
-
-    $('.share_story_pill').click(function(event) {
-        event.preventDefault();
-        slider.goToSlide(0);
-    });
-
-    $('a.about_project').each(function() {
-        $(this).click(function(event) {
-            event.preventDefault();
-            slider.goToSlide(1);
-        });
-    });
+    hasEvent(next, slider.goToNextSlide);
+    hasEvent(prev, slider.goToPrevSlide);
+    hasEvent($('#home_link'), slider.goToSlide, 1);
+    hasEvent($('#explore_link'), slider.goToNextSlide);
+    hasEvent($('#share_link'), slider.goToSlide, 0);
+    hasEvent($('.share_story_pill'), slider.goToSlide, 0);
+    hasEvent($('a.about_project'), slider.goToSlide, 1);
 
     $('i.modal_toggle').click(VPR.updateModal);
 
