@@ -188,7 +188,6 @@ VPR.registerClicks = function() {
     var hasEvent = function(element, action, argument) {
         if (!element.hasClass('has_event')) {
             element.click(function(event) {
-                console.log('click event');
                 event.preventDefault();
                 action(argument);
             });
