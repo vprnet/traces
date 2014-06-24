@@ -6,6 +6,7 @@ $highlight: #ecfaa7;
 @import "vpr";
 @import "vpr-svg";
 @import "ionicons";
+// More imports below
 
 
 body {
@@ -123,6 +124,10 @@ li.slide {
     @media (max-width: $phone) {
         display: none;
     }
+}
+
+div.bx-viewport {
+    min-height: 100% !important;
 }
 
 @import "landing";

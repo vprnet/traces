@@ -108,7 +108,6 @@ History.Adapter.bind(window, 'statechange', function () {
 
 
 if ($('html').hasClass('touch')) {
-    console.log('touch');
     $('body').swipe({
         swipeRight: function() {
             slider.goToPrevSlide();
@@ -129,6 +128,8 @@ VPR.loadSlide = function (idx) {
 
     if (slideID === 'landing') { slideURL = ''; }
 
+    slideID = '#' + slideID;
+
     if (DEBUG) {
         getURL = '/' + slideURL;
     } else {
@@ -136,26 +137,18 @@ VPR.loadSlide = function (idx) {
     }
 
     // If the slide does not have any content
-    if ($('#' + slideID).children().length <= 1) {
+    if ($(slideID).children().length <= 1) {
         // Load the page of the slide with AJAX
         $.get(getURL, function(data) {
             // grab the slide from the returned page content
-            var slide = $(data).find('#' + slideID);
+            var slide = $(data).find(slideID);
+
             // replace the slide container with the actual slide content
-            $('#' + slideID).replaceWith(slide);
-            // reload the slider to recalculate heights
-            slider.reloadSlider({
-                infiniteLoop: false,
-                controls: false,
-                touchEnabled: false,
-                adaptiveHeight: true,
-                adaptiveHeightSpeed: 1000,
-                startSlide: VPR.activeIndex,
-                onSlideBefore: function(el, oldIndex, newIndex) {
-                    VPR.updateSlide(newIndex);
-                    $('body').animate({ scrollTop: 0 }, 200);
-                }
-            });
+            $(slideID).replaceWith(slide);
+
+            if (VPR.activeIndex === idx) {
+                $('div.bx-viewport').height(slide.height() + 50);
+            }
 
             // register events for dynamic content
             VPR.registerClicks();
@@ -202,6 +195,7 @@ VPR.registerClicks = function() {
     hasEvent($('#share_link'), slider.goToSlide, 0);
     hasEvent($('.share_story_pill'), slider.goToSlide, 0);
     hasEvent($('a.about_project'), slider.goToSlide, 1);
+
 
     $('i.modal_toggle').click(VPR.updateModal);
 
