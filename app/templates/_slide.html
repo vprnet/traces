@@ -9,8 +9,10 @@
 
     {% for paragraph in slide['paragraphs'] %}
 
-        {% if loop.index == 2 %}
-        <blockquote>{{ slide['copy'] }}</blockquote>
+        {% if slide['copy'] %}
+            {% if loop.index == 2 %}
+            <blockquote>{{ slide['copy'] }}</blockquote>
+            {% endif %}
         {% endif %}
 
         {% if slide.additionalimage1 %}
