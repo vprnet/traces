@@ -1,7 +1,7 @@
 <div class="row share_container">
     <div class="col-sm-6">
         <hr>
-        <p>Share {% if slide.firstname %}{{ slide.firstname }}'s {% else %}their {% endif %}story:</p>
+        <p>Share {% if slide.firstname %}{{ slide.firstname }}'s {% else %}this {% endif %}story:</p>
         <div class="row social_pills">
             <div class="col-xs-6">
                 <p><a class="pill fb_share" href="https://www.facebook.com/dialog/feed?app_id=282283015178&picture={{ slide.social.img|urlencode }}&link={{ page_url|urlencode }}/{{ slide.slug }}&name={{ slide.social.title|urlencode }}&caption={{ slide.social.subtitle|urlencode }}&description={{ slide.social.description|urlencode }}&redirect_uri={{ page_url|urlencode }}/{{ slide.slug }}#close_window"><i class="icon ion-social-facebook"></i></a></p>
