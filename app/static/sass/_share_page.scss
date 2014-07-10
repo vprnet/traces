@@ -77,11 +77,15 @@
         }
         text-align: center;
         font-size: 30px;
+        margin-bottom: 40px;
         @media (max-width: $tablet) {
             font-size: 22px;
         }
         @media (max-width: $phone) {
             text-align: left;
         }
+    }
+    p.disclaimer {
+        font-size: 18px;
     }
 }
